@@ -19,15 +19,13 @@ export default class SplashScreen extends Component{
 		<View style={{flex:1,flexDirection: 'column',height:'100%' ,alignItems:'center',justyfyContent:'center'}}> 
 		
 		 <ImageBackground 
-		 source={require('../../assets/images/splashscreen_bg.jpg')} 
+		 source={require('../../assets/images/splash_bg.jpg')} 
 		 	style={{width:'100%',height:'100%',justyfyContent:'center',alignItems:'center'}}>
 			 <Image style={{height:80,width:'70%',left: '0%', top: '40%'}} 
 		source={require('../../assets/images/splashscreen_logo.png')} />
-
+			
 		</ImageBackground>
-		
-		
-		
+	
 		</View>
 	);
 	}

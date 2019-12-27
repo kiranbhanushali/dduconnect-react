@@ -33,15 +33,16 @@ class Main extends Component {
 firstLaunchA = (value) =>{this.setState({firstLaunch:false})}
   render() {
     
-      
+      // console.log("from main       ");
+      // console.log(this.props);
       if(this.state.firstLaunch == null){
            return <Text>{this.firstLaunch}</Text>
      }else if (this.state.firstLaunch == false){
-         return <AppDrawerNav />
+         return <AppDrawerNav props={this.props}/>
      }
      else if(this.state.firstLaunch == true){
-         
-            return <IntroScreen myState={this.firstLaunchA}/>
+      
+            return <IntroScreen props={this.props} myState={this.firstLaunchA}/>
         
      }
      

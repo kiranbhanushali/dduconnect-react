@@ -1,9 +1,9 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+
 import SplashScreen from '../StaticScreens/SplashScreen'
 import Main from '../Main'
 import IntroScreen from '../StaticScreens/IntroScreen'
-import HomeScreen from '../Home/HomeScreen'
 const RootStackNavigator = createStackNavigator({
 	Splash: {
 		screen: SplashScreen,
@@ -15,12 +15,6 @@ const RootStackNavigator = createStackNavigator({
 		screen: Main,
 		navigationOptions: {
 		header: null
-		}
-	},Home:{
-		screen: HomeScreen,
-		navigationOptions: {
-			drawerLabel: 'Home',
-			title:'Home',
 		}
 	},
 	Intro:{
