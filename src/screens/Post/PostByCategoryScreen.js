@@ -1,6 +1,7 @@
 import React,{ Component ,PropType, Children } from 'react';
 import {FlatList,ActivityIndicator,ImageBackground,View,ScrollView,Image,TouchableOpacity, Dimensions,} from 'react-native';
 import {Header,Title,Card,Text,Left,Right,Button,Body,Container,Icon, Row} from 'native-base';
+import CategoryPostCard from '../../components/CategoryPostCard';
 
 
 
@@ -46,7 +47,7 @@ export default class PostByCategoryScreen extends Component{
             const cid = this.props.navigation.state.params.cid;
             const cname = CATEFORY_LINKS[cid];  
             this.props.navigation.setParams({ headerTitles: cname });
-            const base = `https://dduconnect.in/wp-json/wp/v2/posts/?categories=${cid}`;
+            const base = `https://dduconnect.in/wp-json/wp/v2/posts/?_embed&&categories=${cid}`;
 
             if(!this.state.articles){
                 return fetch(base)
@@ -76,9 +77,12 @@ export default class PostByCategoryScreen extends Component{
 				<ActivityIndicator size='large'/>
 			  </View>
 			)
-		}
+        }
+        // console.log(this.props.navigation);
 
         return(
+
+           
             <Body>
           
           <View >
@@ -88,40 +92,7 @@ export default class PostByCategoryScreen extends Component{
 			  <View style={{flex:1}}>
 				
 				  {this.state.articles.map((item, key) => (
-						<View style={{ margin: 5}} key={key}>
-							<Card style={{borderRadius: 20 }}>
-							<ImageBackground 
-									source={{
-											uri:item.link,
-											}}
-									style={{ flex:1,width: 165, height: 100 }}
-									imageStyle={{borderRadius: 10 }}>
-						
-									<View style={{flex:1,flexDirection:'column'}}>
-										<View style={{
-												flex:1,flexDirection:'column-reverse',padding:5,
-											}}>
-										
-										
-										 <Card  transparent>            
-											<Text style={{ color: '#3f6f00',fontSize:10, fontWeight: '800' }}
-												onPress={() => {
-													// console.log(item._embedded['wp:featuredmedia'][0].source_url);
-												 this.props.navigation.navigate('Post',item);
-											}}>
-												{item.title.rendered}
-											</Text>
-
-										</Card>
-										</View>	
-										
-									</View>
-									
-								</ImageBackground>
-
-							</Card>
-
-						</View>
+						<CategoryPostCard  item={item} key={key} navigation={this.props.navigation} />
 					))}
 
 

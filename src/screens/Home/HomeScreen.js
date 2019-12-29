@@ -41,6 +41,9 @@ export default class HomeScreen extends Component{
 				console.error(error);
 			});
 		}
+		// else{
+		// 	this.setState(isLoading: false,);
+		// }
 	  }
 
 
@@ -55,7 +58,7 @@ export default class HomeScreen extends Component{
 	render(){
 		// console.log(this.props.navigation);	
 
-		//  console.log(this.state.articles);
+		// console.log(this.state);
 		
 		if(this.state.isLoading){
 			return(

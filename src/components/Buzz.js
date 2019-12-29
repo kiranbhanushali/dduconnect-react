@@ -1,94 +1,118 @@
 import React,{ Component ,PropType } from 'react';
-import {FlatList,ImageBackground,View,ScrollView,Image, Dimensions,} from 'react-native';
-import {Header,Title,Card,Text,Left,Right,Button,Body,Container,Icon, Row} from 'native-base';
+import {FlatList,ImageBackground,View,ScrollView,Image, Dimensions,ActivityIndicator} from 'react-native';
+import {Header,Title,Card,Text,Left,Right,Button,Body,Container,Icon, CardItem,} from 'native-base';
 
 export default class Buzz extends Component{
 
-    constructor(props) {
-		super(props);
-		const slides = [
-		  {
-			key: '1',
-			title: 'BLOOD DONATION CAMP ORGANIZED BY NSS',
-			imguri: 'https://dduconnect.in/wp-content/uploads/2019/09/WhatsApp-Image-2019-09-13-at-00.03.38-1.jpeg',
-			uri:'https://dduconnect.in/blood-donation-camp-organized-by-nss/',
-			content:`It is truly said that or a noble cause for the betterment of society by conducting various events at university.  The camp began at 10:00 AM in the morningand received a great pfrom the donors across different 
-					 departments, all day long. `,
-			backgroundColor: '#20d2bb',
-		  },
-		  {
-			key: '2',
-			title: 'BLOOD DONATION CAMP ORGANIZED BY NSS',
-			imguri: 'https://dduconnect.in/wp-content/uploads/2019/09/WhatsApp-Image-2019-09-13-at-00.03.38-1.jpeg',
-			uri:'https://dduconnect.in/blood-donation-camp-organized-by-nss/',
-			content:`It is truly said that or a noble cause for the betterment of society by conducting various events at university.  The camp began at 10:00 AM in the morning and received a great pfrom the donors across different 
-					 departments, all day long. `,
-			backgroundColor: '#20d2bb',
-		  },
-		  {
-			key: '3',
-			title: 'BLOOD DONATION CAMP ORGANIZED BY NSS',
-			imguri: 'https://dduconnect.in/wp-content/uploads/2019/09/WhatsApp-Image-2019-09-13-at-00.03.38-1.jpeg',
-			uri:'https://dduconnect.in/blood-donation-camp-organized-by-nss/',
-			content:`It is truly said that or a noble cause for the betterment of society by conducting various events at university.  The camp began at 10:00 AM in the morningand received a great pfrom the donors across different 
-					 departments, all day long. `,
-			backgroundColor: '#20d2bb',
-		  },
-		  {
-			key: '4',
-			title: 'BLOOD DONATION CAMP ORGANIZED BY NSS',
-			imguri: 'https://dduconnect.in/wp-content/uploads/2019/09/WhatsApp-Image-2019-09-13-at-00.03.38-1.jpeg',
-			uri:'https://dduconnect.in/blood-donation-camp-organized-by-nss/',
-			content:`It is truly said that or a noble cause for the betterment of society by conducting various events at university.  The camp began at 10:00 AM in the morning and received a great pfrom the donors across different 
-					 departments, all day long. `,
-			backgroundColor: '#20d2bb',
-		  },
-		];
-		global.slides = slides;
-	  }
-	 
+	constructor(props) {
+        super(props);
+        this.state={
+            isLoading: true,
+        }
+        global.articles = this.state.articles;
+    }
+
+    componentDidMount(){
+            // console.log(this)
+            const CATEFORY_LINKS = {
+                79:"'Tech' it easy",
+                111:"Dentistry arround the gloabe",
+                129:"Pharmacy: Then & Now",
+                82:"Connect-ions",
+                83:"Fiction",
+                90:"Open Letter",
+                91:"Verses",
+                81:"Writers' Lounge ",
+                133:"Alumni Speaks",
+                134:"DDU Speaks",
+                135:"Hall of Fame",
+                132:"Interview",
+                121:"More Content",
+                84:"Non-Tech",
+                80:"Tech",
+            }; 
+            
+            const base = `https://dduconnect.in/wp-json/wp/v2/posts/?_embed&categories=167`;
+
+            if(!this.state.articles){
+                return fetch(base)
+                .then((response) => response.json())
+                .then((responseJson) => {
+                    this.setState({
+                    isLoading: false,
+                    articles: responseJson,
+                    }, function(){
+            
+                    });
+            
+                })
+                .catch((error) =>{
+                    console.error(error);
+                });
+            }
+
+          
+            
+	}
+	
 
 
 	render(){
-    return(
-        <Body>
+		if(this.state.isLoading){
+			return(
+			  <View style={{flex: 1,justifyContent:'center',padding: 20}}>
+				<ActivityIndicator size='large'/>
+			  </View>
+			)
+		}
 
-          <View style={{ flexDirection: 'row',flexWrap: 'wrap',flexShrink: 1 }}>
-            <ScrollView
-              showsHorizontalScrollIndicator={false}>
-			  <View style={{flex:1,flexWrap: 'wrap',flexShrink: 1}}>
-
-					{global.slides.map((item, key) => (
-						<View key={key}>
-							<Card style={{height:200,borderRadius: 10,flexWrap: 'wrap',flexShrink: 1}}>
-										<ImageBackground 
-												source={{
-														uri: item.imguri,
-														}}
-												style={{ flex:5, height: 140,borderRadius: 10}}  imageStyle={{borderTopLeftRadius:10,borderTopRightRadius:10}}>
-									
-												<View style={{flex:1,flexDirection:'column-reverse',borderRadius: 10}}>
-												
-														<Text style={{ color: '#fff',fontSize:14, fontWeight: '200' }}
-															onPress={() => {
-																// console.log(this.props);
-															this.props.navigation.navigate('Post',item);
-														}}>
-															{item.title}
-														</Text>
-
-												</View>
-
-										</ImageBackground>
-										<View
-											style={{ flex:2,
-												height:60,backgroundColor:'#ececec'
+        return(
+            <Body>
+          
+          <View >
+            <ScrollView>
+              
+            
+			  <View style={{flex:1}}>
+				
+				  {this.state.articles.map((item, key) => (
+						<View style={{ margin: 5}} key={key}>
+							<Card style={{borderRadius: 20 }}>
+							<ImageBackground 
+									source={{
+											uri:   item._embedded['wp:featuredmedia'][0].source_url,
+											}}
+									style={{ flex:1, height:150 }}
+									imageStyle={{borderRadius: 10 ,flex:1,width:'100%'}}>
+						
+									<View style={{flex:1,flexDirection:'column'}}>
+										<View style={{
+												flex:1,flexDirection:'column-reverse',padding:5,
 											}}>
-											<Text style={{ color: '#606070',fontSize:10 }}>
-												{item.content}
+										
+										
+										 <Card  transparent>            
+											<Text style={{ color: '#fff',fontSize:15, fontWeight: 'bold' }}
+												onPress={() => {
+													// console.log(item._embedded['wp:featuredmedia'][0].source_url);
+												 this.props.navigation.navigate('Post',item);
+											}}>
+												{item.title.rendered}
 											</Text>
-											<Text style={{ color: '#228B22' }}>{item.text}</Text>
-										</View>
+
+										</Card>
+										</View>	
+										
+									</View>
+									
+								</ImageBackground>
+								<CardItem>
+											<Text style={{fontSize:10}} numberOfLines={3}>
+												{item.excerpt.rendered}
+											</Text>
+
+								</CardItem>
+
 							</Card>
 
 						</View>
@@ -100,7 +124,6 @@ export default class Buzz extends Component{
             </ScrollView>
           </View>
         </Body>
- 
     );
 	}
 

@@ -22,7 +22,7 @@ export default class LatestArticle extends Component{
         </CollapseHeader>
         <CollapseBody>
         <View style={{flex:1,flexDirection:'row'}}>
-              <CircleViewClick source={IMAGES.tech_it_easy}/>
+              <CircleViewClick navigation={this.props.navigation} categoryid='79' source={IMAGES.tech_it_easy}/>
           </View> 
 
         </CollapseBody>
@@ -35,11 +35,11 @@ export default class LatestArticle extends Component{
           <CollapseBody>
             <View style={{flex:1,flexDirection:'row'}}>
 
-                <CircleViewClick  source={IMAGES.connections}/>
-                <CircleViewClick source={IMAGES.fiction}/>
-                <CircleViewClick source={IMAGES.open_letter}/>
-                <CircleViewClick source={IMAGES.verses} />
-                <CircleViewClick source={IMAGES.writers_launge}/>  
+                <CircleViewClick  navigation={this.props.navigation} categoryid='82' source={IMAGES.connections}/>
+                <CircleViewClick navigation={this.props.navigation} categoryid='83' source={IMAGES.fiction}/>
+                <CircleViewClick navigation={this.props.navigation} categoryid='90' source={IMAGES.open_letter}/>
+                <CircleViewClick navigation={this.props.navigation} categoryid='91' source={IMAGES.verses} />
+                <CircleViewClick navigation={this.props.navigation} categoryid='81' source={IMAGES.writers_launge}/>  
      
             </View> 
           </CollapseBody>
@@ -51,9 +51,9 @@ export default class LatestArticle extends Component{
           </CollapseHeader>
           <CollapseBody>
           <View style={{flex:1,flexDirection:'row'}}>
-                <CircleViewClick  navigation={this.props.navigation} categoryid='79' source={IMAGES.allumni}/>
-                <CircleViewClick source={IMAGES.ddu_speaks}/>
-                <CircleViewClick source={IMAGES.interview}/>
+                <CircleViewClick  navigation={this.props.navigation} categoryid='133' source={IMAGES.allumni}/>
+                <CircleViewClick navigation={this.props.navigation} categoryid='134' source={IMAGES.ddu_speaks}/>
+                <CircleViewClick navigation={this.props.navigation} categoryid='132' source={IMAGES.interview}/>
                
             </View> 
           </CollapseBody>

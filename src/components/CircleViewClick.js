@@ -11,7 +11,7 @@ export default class LatestArticle extends Component{
         const cid = this.props.categoryid;
 
        this.props.navigation.navigate('PostByCategory',{
-           cid
+           cid,navigation: this.props.navigation
        });
     }
     render(){
