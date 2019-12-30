@@ -78,7 +78,7 @@ export default class PostByCategoryScreen extends Component{
 			  </View>
 			)
         }
-        // console.log(this.props.navigation);
+        //  console.log(this.props.navigation);
 
         return(
 
@@ -88,10 +88,11 @@ export default class PostByCategoryScreen extends Component{
           <View >
             <ScrollView>
               
-            
+              
 			  <View style={{flex:1}}>
 				
 				  {this.state.articles.map((item, key) => (
+                      
 						<CategoryPostCard  item={item} key={key} navigation={this.props.navigation} />
 					))}
 

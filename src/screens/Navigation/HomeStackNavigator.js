@@ -7,18 +7,21 @@ import { createStackNavigator } from 'react-navigation-stack';
 import PostScreen from '../Post/PostScreen';
 import HomeScreen from '../Home/HomeScreen';
 import PostByCategoryScreen from '../Post/PostByCategoryScreen';
+import CategoryPostCard from '../../components/CategoryPostCard';
 const HomeStackNavigator = createStackNavigator({
 	Home: {
-        screen: HomeScreen,
-       
-        
+        screen: HomeScreen,        
     },
     Post:{
         screen: PostScreen,
     },
     PostByCategory:{
         screen: PostByCategoryScreen,
+    },
+    CategoryPostCard:{
+        screen: CategoryPostCard,
     }
+
 },
 {
     initialRouteName:'Home',
