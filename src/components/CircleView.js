@@ -9,11 +9,10 @@ export default class LatestArticle extends Component{
     render(){
     
     return(
-        <View style={{underlayColor:'#ececec',}}>
+        <View style={{flex:1,underlayColor:'#ececec',}}>
             
-           <Image  style={{flex:1,width:85,height:85}} source={this.props.source} />
+           <Image  style={{flex:1,width:Dimensions.get('window').width/4.4,height:Dimensions.get('window').width/4.4}} source={this.props.source} />
           
-
         </View>
     );
 	}

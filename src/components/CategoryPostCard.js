@@ -31,7 +31,7 @@ export default class CategoryPostCard extends Component{
       title = title.replace("&#8217;", "\'");
       title = title.replace("&#038;", "&");
       title = title.replace("&nbsp;", " ");
-      console.log(tempdetails);
+      
       this.setState({
         title,
         tempdetails,
@@ -49,9 +49,9 @@ export default class CategoryPostCard extends Component{
                    <View>
                    <Image style={{width:'100%',height:150,borderTopLeftRadius:20,borderTopRightRadius:20}} source={{uri: this.props.item._embedded['wp:featuredmedia'][0].source_url }} />
                    </View> 
-                  <View style={{flexDirection:'row',padding:8,flex:1}}>
+                  <View style={{flexDirection:'row',padding:4,marginBottom:10,flex:1}}>
                      <Text style={{paddingHorizontal:15,fontSize:14,flex:8,}}>{this.state.title}</Text>
-                     <TouchableOpacity  style={{alignItems:'flex-end',flex:1}} onPress={this._onPressButton}>
+                     <TouchableOpacity  style={{alignItems:'flex-end',}} onPress={this._onPressButton}>
                         <Icon name="heart"></Icon>
                     </TouchableOpacity>
                   </View>  

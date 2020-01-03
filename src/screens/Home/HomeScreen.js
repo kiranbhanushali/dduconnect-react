@@ -24,33 +24,33 @@ export default class HomeScreen extends Component{
 
 	}
 
-	componentDidMount(){
-		if(!this.state.articles){
-			return fetch('https://dduconnect.in/wp-json/wp/v2/posts/?_embed&per_page=8&fields=id,title,date,categories,link,_links')
-			.then((response) => response.json())
-			.then((responseJson) => {
-				this.setState({
-				isLoading: false,
-				articles: responseJson,
-				}, function(){
+	// componentDidMount(){
+	// 	if(!this.state.articles){
+	// 		return fetch('https://dduconnect.in/wp-json/wp/v2/posts/?_embed&per_page=8&fields=id,title,date,categories,link,_links')
+	// 		.then((response) => response.json())
+	// 		.then((responseJson) => {
+	// 			this.setState({
+	// 			isLoading: false,
+	// 			articles: responseJson,
+	// 			}, function(){
 		
-				});
+	// 			});
 		
-			})
-			.catch((error) =>{
-				console.error(error);
-			});
-		}
-		// else{
-		// 	this.setState(isLoading: false,);
-		// }
-	  }
+	// 		})
+	// 		.catch((error) =>{
+	// 			console.error(error);
+	// 		});
+	// 	}
+	// 	// else{
+	// 	// 	this.setState(isLoading: false,);
+	// 	// }
+	//   }
 
 
 	constructor(props) {
 		super(props);
 		this.state ={ isLoading: true,}
-		global.articles = this.state.articles;
+	
 	  }
 
 	
@@ -60,13 +60,13 @@ export default class HomeScreen extends Component{
 
 		// console.log(this.state);
 		
-		if(this.state.isLoading){
-			return(
-			  <View style={{flex: 1,justifyContent:'center',padding: 20}}>
-				<ActivityIndicator size='large'/>
-			  </View>
-			)
-		}
+		// if(this.state.isLoading){
+		// 	return(
+		// 	  <View style={{flex: 1,justifyContent:'center',padding: 20}}>
+		// 		<ActivityIndicator size='large'/>
+		// 	  </View>
+		// 	)
+		// }
 		
 		return(
 			<Container>
@@ -80,7 +80,7 @@ export default class HomeScreen extends Component{
 					<Text>LatestArticle</Text>
 				</Separator>
 
-					<LatestArticle data={this.state.articles} navigation={this.props.navigation}/>
+					<LatestArticle  navigation={this.props.navigation}/>
 
 				<Separator >
 					<Text>Buzz</Text>

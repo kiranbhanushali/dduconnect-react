@@ -2,7 +2,10 @@ import React,{ Component ,PropType, Children } from 'react';
 import {FlatList,ActivityIndicator,ImageBackground,View,ScrollView,Image,TouchableOpacity, Dimensions,} from 'react-native';
 import {Header,Title,Card,Text,Left,Right,Button,Body,Container,Icon, Row} from 'native-base';
 import CategoryPostCard from '../../components/CategoryPostCard';
+import ReactPlaceholder from 'react-placeholder';
 
+import SvgAnimatedLinearGradient from 'react-native-svg-animated-linear-gradient'
+import Svg, {Circle, Rect, } from 'react-native-svg'
 
 
 export default class PostByCategoryScreen extends Component{
@@ -73,9 +76,77 @@ export default class PostByCategoryScreen extends Component{
               
         if(this.state.isLoading){
 			return(
-			  <View style={{flex: 1,justifyContent:'center',padding: 20}}>
-				<ActivityIndicator size='large'/>
-			  </View>
+			//   <View style={{flex: 1,justifyContent:'center',padding: 20}}>
+			// 	<ActivityIndicator size='large'/>
+            //   </View>
+            
+            // <ReactPlaceholder  customPlaceholder={<CategoryPostCard />}>
+            // <CategoryPostCard item={
+
+            // }/>  
+            // </ReactPlaceholder>
+            <View>
+                <View style={{flex:1,paddingVertical:10}}>
+                <SvgAnimatedLinearGradient
+                primaryColor="#f3f3f3"
+                    secondaryColor="#ecebeb"
+                  height={250}
+                  style={{flex:1}}
+                  width={Dimensions.get('window').width}>
+
+                  <Rect x={Dimensions.get('window').width/50} y="10" rx="0" ry="0" width={Dimensions.get('window').width/1.04} height="150" /> 
+                  <Rect x={Dimensions.get('window').width/50}y="170" rx="0" ry="0" width={Dimensions.get('window').width/1.04} height="19" /> 
+                  <Rect x={Dimensions.get('window').width/50}y="195" rx="0" ry="0" width={Dimensions.get('window').width/1.04} height="19" /> 
+                  <Rect x={Dimensions.get('window').width/50}y="220" rx="0" ry="0" width={Dimensions.get('window').width/1.04} height="19" /> 
+        
+   
+                 </SvgAnimatedLinearGradient>
+
+
+                  </View>
+                  <View style={{paddingBottom:255}} />
+                  <View style={{flex:1,paddingVertical:10}}>
+                  <SvgAnimatedLinearGradient
+                primaryColor="#f3f3f3"
+                    secondaryColor="#ecebeb"
+                  height={250}
+                  style={{flex:1}}
+                  width={Dimensions.get('window').width}>
+
+                  <Rect x={Dimensions.get('window').width/50} y="10" rx="0" ry="0" width={Dimensions.get('window').width/1.04} height="150" /> 
+                  <Rect x={Dimensions.get('window').width/50}y="170" rx="0" ry="0" width={Dimensions.get('window').width/1.04} height="19" /> 
+                  <Rect x={Dimensions.get('window').width/50}y="195" rx="0" ry="0" width={Dimensions.get('window').width/1.04} height="19" /> 
+                  <Rect x={Dimensions.get('window').width/50}y="220" rx="0" ry="0" width={Dimensions.get('window').width/1.04} height="19" /> 
+                 
+   
+                 </SvgAnimatedLinearGradient>
+
+
+                  </View>
+
+                  <View style={{paddingBottom:255}} />
+                  <View style={{flex:1,paddingVertical:10}}>
+                  <SvgAnimatedLinearGradient
+                primaryColor="#f3f3f3"
+                    secondaryColor="#ecebeb"
+                  height={250}
+                  style={{flex:1}}
+                  width={Dimensions.get('window').width}>
+
+                  <Rect x={Dimensions.get('window').width/50} y="10" rx="0" ry="0" width={Dimensions.get('window').width/1.04} height="150" /> 
+                  <Rect x={Dimensions.get('window').width/50}y="170" rx="0" ry="0" width={Dimensions.get('window').width/1.04} height="19" /> 
+                  <Rect x={Dimensions.get('window').width/50}y="195" rx="0" ry="0" width={Dimensions.get('window').width/1.04} height="19" /> 
+                  <Rect x={Dimensions.get('window').width/50}y="220" rx="0" ry="0" width={Dimensions.get('window').width/1.04} height="19" /> 
+                  
+   
+                 </SvgAnimatedLinearGradient>
+
+
+                  </View>
+
+
+            </View>
+            
 			)
         }
         //  console.log(this.props.navigation);

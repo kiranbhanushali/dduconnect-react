@@ -2,6 +2,10 @@ import React,{ Component ,PropType } from 'react';
 import {FlatList,ImageBackground,View,ScrollView,Image, Dimensions,ActivityIndicator} from 'react-native';
 import {Header,Title,Card,Text,Left,Right,Button,Body,Container,Icon, CardItem,} from 'native-base';
 
+import {widthPercentageToDP , heightPercentageToDP } from 'react-native-responsive-screen';
+import SvgAnimatedLinearGradient from 'react-native-svg-animated-linear-gradient'
+import Svg, {Circle, Rect, } from 'react-native-svg'
+
 export default class Buzz extends Component{
 
 	constructor(props) {
@@ -56,13 +60,57 @@ export default class Buzz extends Component{
 	}
 	
 
-
+  content({excerpt}){
+    var tempdetails=excerpt.rendered;
+    tempdetails = tempdetails.replace("<p>", "");
+    tempdetails = tempdetails.replace("</p>", "");
+    tempdetails = tempdetails.replace("[&hellip;]", "");
+    tempdetails = tempdetails.replace("&#8211;", "-");
+    tempdetails = tempdetails.replace("&#8220;", "\"");
+    tempdetails = tempdetails.replace("&#8221;", "\"");
+    tempdetails = tempdetails.replace("&#8216;", "\'");
+    tempdetails = tempdetails.replace("&#8217;", "\'");
+    tempdetails = tempdetails.replace("&nbsp;", " ");
+    tempdetails = tempdetails.replace("&#038;", "&");
+    return tempdetails;
+  }
 	render(){
 		if(this.state.isLoading){
 			return(
-			  <View style={{flex: 1,justifyContent:'center',padding: 20}}>
-				<ActivityIndicator size='large'/>
-			  </View>
+			 <View style={{flex:1}}>
+           <View style={{flex: 1,justifyContent:'center',padding:10}}>
+           <SvgAnimatedLinearGradient
+                primaryColor="#f3f3f3"
+                    secondaryColor="#ecebeb"
+                  height={250}
+                  style={{flex:1}}
+                  width={Dimensions.get('window').width}>
+
+                  <Rect x={Dimensions.get('window').width/50} y="10" rx="0" ry="0" width={Dimensions.get('window').width/1.07} height="150" /> 
+                  <Rect x={Dimensions.get('window').width/50}y="170" rx="0" ry="0" width={Dimensions.get('window').width/1.07} height="19" /> 
+                  <Rect x={Dimensions.get('window').width/50}y="195" rx="0" ry="0" width={Dimensions.get('window').width/1.07} height="19" /> 
+                  <Rect x={Dimensions.get('window').width/50}y="220" rx="0" ry="0" width={Dimensions.get('window').width/1.07} height="19" /> 
+        
+   
+                 </SvgAnimatedLinearGradient>
+			     </View>
+           <View style={{flex: 1,justifyContent:'center',padding:10}}>
+           <SvgAnimatedLinearGradient
+                primaryColor="#f3f3f3"
+                    secondaryColor="#ecebeb"
+                  height={250}
+                  style={{flex:1}}
+                  width={Dimensions.get('window').width}>
+
+                  <Rect x={Dimensions.get('window').width/50} y="10" rx="0" ry="0" width={Dimensions.get('window').width/1.07} height="150" /> 
+                  <Rect x={Dimensions.get('window').width/50}y="170" rx="0" ry="0" width={Dimensions.get('window').width/1.07} height="19" /> 
+                  <Rect x={Dimensions.get('window').width/50}y="195" rx="0" ry="0" width={Dimensions.get('window').width/1.07} height="19" /> 
+                  <Rect x={Dimensions.get('window').width/50}y="220" rx="0" ry="0" width={Dimensions.get('window').width/1.07} height="19" /> 
+        
+   
+                 </SvgAnimatedLinearGradient>
+			     </View>
+       </View>
 			)
 		}
 
@@ -83,7 +131,7 @@ export default class Buzz extends Component{
 											uri:   item._embedded['wp:featuredmedia'][0].source_url,
 											}}
 									style={{ flex:1, height:150 }}
-									imageStyle={{borderRadius: 10 ,flex:1,width:'100%'}}>
+									imageStyle={{borderTopRightRadius:10,borderTopLeftRadius:10,flex:1,width:'100%'}}>
 						
 									<View style={{flex:1,flexDirection:'column'}}>
 										<View style={{
@@ -108,7 +156,8 @@ export default class Buzz extends Component{
 								</ImageBackground>
 								<CardItem>
 											<Text style={{fontSize:10}} numberOfLines={3}>
-												{item.excerpt.rendered}
+												{this.content(item)} 
+                        {/* item.excerpt.rendered */}
 											</Text>
 
 								</CardItem>
