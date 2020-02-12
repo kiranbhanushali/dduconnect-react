@@ -10,20 +10,18 @@ import { Body ,Icon } from 'native-base';
 const MeetOurTeamNav = createStackNavigator({
 	MeetOurTeam:{
         screen:MeetOurTeamScreen,
-       
+       navigationOptions:{
+           header:null,
+       }
     },
     Members:{
         screen:MembersScreen,
+       
     }
 },
 {
     initialRouteName:'MeetOurTeam',
-    navigationOptions: {
-        header: ({ goBack }) => ({
-            left: ( <Icon name={'arrow'} onPress={ () => { goBack() } }  /> ),  
-        }),
-  
-        }
+    
 }
 );
 

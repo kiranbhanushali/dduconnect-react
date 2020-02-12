@@ -9,6 +9,7 @@ import HomeScreen from '../Home/HomeScreen';
 import PostByCategoryScreen from '../Post/PostByCategoryScreen';
 import CategoryPostCard from '../../components/CategoryPostCard';
 import PastYearPapers from '../StaticScreens/PastYearPapers';
+import The8thVolumeScreen from '../StaticScreens/The8thVolumeScreen';
 const HomeStackNavigator = createStackNavigator({
 	Home: {
         screen: HomeScreen,        
@@ -24,12 +25,15 @@ const HomeStackNavigator = createStackNavigator({
     },
     PastYearPapers:{
         screen:PastYearPapers,
+    },
+    The8ThVolume:{
+        screen:The8thVolumeScreen,
     }
 
 },
 {
     initialRouteName:'Home',
-    header:null,
+    
 }
 );
 

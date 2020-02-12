@@ -4,7 +4,7 @@ import { View, Text, Image, StyleSheet, TextInput, Linking, TouchableHighlight }
 import t from 'tcomb-form-native'; // 0.6.9
 import { Button, Icon } from 'native-base';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { SocialIcon } from 'react-native-elements';
+import { SocialIcon ,Header} from 'react-native-elements';
 
 const Form = t.form.Form;
 
@@ -24,7 +24,16 @@ export default class ContactUsScreen extends Component{
              flexDirection: 'column',
              //justifyContent: 'center',
              alignItems: 'stretch',
+             marginTop:-20
            }}>
+
+          <Header backgroundColor='fff' >
+          <Button transparent onPress={this.props.navigation.toggleDrawer}>
+            <Icon name='menu' />
+          </Button>
+          <Text style={{fontFamily:'Montserrat-Bold',fontWeight:'900'}}> ContactUs </Text>
+          </Header>     
+
         <View style={{flex:3, backgroundColor:'powderblue'}}>
             <Text style={styles.title}>GET IN TOUCH</Text>
             <View style={styles.container}>

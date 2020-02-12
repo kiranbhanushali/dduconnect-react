@@ -26,17 +26,24 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import HomeStackNavigator from './HomeStackNavigator';
 import MeetOurTeamNav from './MeetOurTeamNav';
+import CopyrightsScreen from '../StaticScreens/CopyrightsScreen';
 
 const CustomDrawerComponent = props => (
   <SafeAreaView style={{flex: 1}}>
-     <ImageBackground style={{flex:1}} imageStyle={{resizeMode:'stretch',alignSelf:'center',}} source={require('../../assets/images/The_8th_Volume2.jpg')} >
-        <View style={{flex:1,flexDirection:'column-reverse',alignItems:'flex-end'}} >
-          <TouchableOpacity style={{paddingBottom:40,paddingRight:10}} >
-            <Text style={{fontSize: 20,color:'white'}}>Know More</Text>
-          </TouchableOpacity>
+        
+
+        <View style={{flex:1,flexDirection:'column',alignItems:'center',alignSelf:'center',justifyContent:'center'}} >
+        {/* <Image style={{flex:1}}
+                     source={require('../../assets/images/The_8th_Volume2.jpg')} /> */}
+                      <Text 
+                      style={{fontFamily:'Montserrat-Bold',fontWeight:'900',fontSize:24}}>
+                        The_8th_Volume</Text>
+                  <TouchableOpacity onPress={(props)=>{props.navigation.navigate('The8ThVolume')} }  >
+                    <Text style={{fontSize: 20,color:'000'}}>Know More</Text>
+                  </TouchableOpacity>
         </View>
 
-      </ImageBackground>
+  
         <View  style={{flex:2}}>
           <ScrollView style={{flex:3,}}>
             <DrawerItems {...props} />
@@ -91,7 +98,6 @@ const MyDrawerNavigator = createDrawerNavigator(
     MeetOurTeam: {
       screen: MeetOurTeamNav,
       navigationOptions: {
-        
         drawerLabel: 'MeetOurTeam',
         drawerIcon: ({tintColor}) => (
           <Icon type="MaterialIcons" name='people' tintColor={tintColor} />
@@ -107,6 +113,15 @@ const MyDrawerNavigator = createDrawerNavigator(
         )
       },
     },
+    Copyrights:{
+      screen: CopyrightsScreen,
+      navigationOptions: {
+        drawerLabel: 'Copyrights',
+        drawerIcon: ({tintColor}) => (
+          <Icon  name='copy' tintColor={tintColor} />
+        )
+      },
+    }
   },
   {
     initialRouteName: 'Home',

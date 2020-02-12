@@ -16,6 +16,7 @@ import {
 import { widthPercentageToDP } from 'react-native-responsive-screen';
 
 export default class MembersScreen extends Component {
+
   componentDidMount() {
       this.setState({d:this.props.navigation.state.params})
     if (!this.state.mem) {
@@ -27,7 +28,7 @@ export default class MembersScreen extends Component {
           this.setState(
             {
               isLoading: false,
-              mem:responseJson,
+              nmem:responseJson[this.props.navigation.state.params.d],
             },
             function() {},
           );
@@ -52,13 +53,16 @@ export default class MembersScreen extends Component {
         </View>
       );
     }
+    // console.log(this.props.navigation.state.params)
+ 
+    console.log(this.state.nmem);
     return (
       <Container>
         <View style={{flex: 1}}>
           <ScrollView>
           
           <View style={{flex: 1,width:widthPercentageToDP('65%'),justifyContent:'center',alignSelf:'center'}}>
-            {this.state.mem[1].members.map((item, key) => (
+            {this.state.nmem.members.map((item, key) => (
               <Card style={{flex:1,alignItems:'center',padding:8}} key={key}>
                  <Image  	source={{	uri:item.image
 											}} style={{width:100,height:100,borderRadius:100/2}}/>
