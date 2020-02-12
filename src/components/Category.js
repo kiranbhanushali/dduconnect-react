@@ -61,7 +61,7 @@ export default class LatestArticle extends Component{
 
         <Collapse style={{flexDirection:'row'}} >
           <CollapseHeader>
-              <CircleView source={IMAGES.past_year_papers}/>  
+              <CircleViewClick categoryid= '200' navigation={this.props.navigation}  source={IMAGES.past_year_papers}/>  
           </CollapseHeader>
         </Collapse>
     

@@ -9,7 +9,7 @@ import {
   ImageBackground,
 } from 'react-native';
 
-import {Icon} from 'native-base';
+import {Icon, Header} from 'native-base';
 import {createDrawerNavigator, DrawerItems} from 'react-navigation-drawer';
 import {createAppContainer} from 'react-navigation';
 import 'react-native-gesture-handler';
@@ -25,12 +25,13 @@ import ContactUsScreen from '../StaticScreens/ContactUsScreen';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import HomeStackNavigator from './HomeStackNavigator';
+import MeetOurTeamNav from './MeetOurTeamNav';
 
 const CustomDrawerComponent = props => (
   <SafeAreaView style={{flex: 1}}>
-     <ImageBackground style={{flex:1}} imageStyle={{resizeMode:'stretch',alignSelf:'center'}} source={require('../../assets/images/The_8th_Volume2.jpg')} >
+     <ImageBackground style={{flex:1}} imageStyle={{resizeMode:'stretch',alignSelf:'center',}} source={require('../../assets/images/The_8th_Volume2.jpg')} >
         <View style={{flex:1,flexDirection:'column-reverse',alignItems:'flex-end'}} >
-          <TouchableOpacity style={{paddingBottom:40}} >
+          <TouchableOpacity style={{paddingBottom:40,paddingRight:10}} >
             <Text style={{fontSize: 20,color:'white'}}>Know More</Text>
           </TouchableOpacity>
         </View>
@@ -83,12 +84,14 @@ const MyDrawerNavigator = createDrawerNavigator(
         drawerLabel: 'AboutUs',
         drawerIcon: ({tintColor}) => (
           <Icon type="MaterialCommunityIcons" name='account-badge' tintColor={tintColor} />
+          
         )
       },
     },
     MeetOurTeam: {
-      screen: MeetOurTeamScreen,
+      screen: MeetOurTeamNav,
       navigationOptions: {
+        
         drawerLabel: 'MeetOurTeam',
         drawerIcon: ({tintColor}) => (
           <Icon type="MaterialIcons" name='people' tintColor={tintColor} />

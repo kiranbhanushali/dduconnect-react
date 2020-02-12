@@ -2,7 +2,9 @@
   package="com.ddu_connect">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+      <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
     <application
       android:name=".MainApplication"
       android:label="@string/app_name"
@@ -13,8 +15,11 @@
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"
+         android:launchMode="singleTop"
         android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-        android:windowSoftInputMode="adjustResize">
+        android:windowSoftInputMode="adjustResize"
+       
+      >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />

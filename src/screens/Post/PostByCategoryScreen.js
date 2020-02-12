@@ -48,10 +48,11 @@ export default class PostByCategoryScreen extends Component{
                 80:"Tech",
             }; 
             const cid = this.props.navigation.state.params.cid;
+        
             const cname = CATEFORY_LINKS[cid];  
             this.props.navigation.setParams({ headerTitles: cname });
             const base = `https://dduconnect.in/wp-json/wp/v2/posts/?_embed&&categories=${cid}`;
-
+            
             if(!this.state.articles){
                 return fetch(base)
                 .then((response) => response.json())
@@ -85,14 +86,14 @@ export default class PostByCategoryScreen extends Component{
 
             // }/>  
             // </ReactPlaceholder>
-            <View>
+            <View style={{flex:1,width:'98%',alignContent:'center',alignSelf:'center'}}>
                 <View style={{flex:1,paddingVertical:10}}>
                 <SvgAnimatedLinearGradient
-                primaryColor="#f3f3f3"
+                primaryColor="#dbd9d9"
                     secondaryColor="#ecebeb"
                   height={250}
                   style={{flex:1}}
-                  width={Dimensions.get('window').width}>
+                  width={Dimensions.get('window').width*0.95}>
 
                   <Rect x={Dimensions.get('window').width/50} y="10" rx="0" ry="0" width={Dimensions.get('window').width/1.04} height="150" /> 
                   <Rect x={Dimensions.get('window').width/50}y="170" rx="0" ry="0" width={Dimensions.get('window').width/1.04} height="19" /> 
@@ -107,11 +108,11 @@ export default class PostByCategoryScreen extends Component{
                   <View style={{paddingBottom:255}} />
                   <View style={{flex:1,paddingVertical:10}}>
                   <SvgAnimatedLinearGradient
-                primaryColor="#f3f3f3"
+                primaryColor="#dbd9d9"
                     secondaryColor="#ecebeb"
                   height={250}
                   style={{flex:1}}
-                  width={Dimensions.get('window').width}>
+                  width={Dimensions.get('window').width*0.95}>
 
                   <Rect x={Dimensions.get('window').width/50} y="10" rx="0" ry="0" width={Dimensions.get('window').width/1.04} height="150" /> 
                   <Rect x={Dimensions.get('window').width/50}y="170" rx="0" ry="0" width={Dimensions.get('window').width/1.04} height="19" /> 
@@ -127,11 +128,11 @@ export default class PostByCategoryScreen extends Component{
                   <View style={{paddingBottom:255}} />
                   <View style={{flex:1,paddingVertical:10}}>
                   <SvgAnimatedLinearGradient
-                primaryColor="#f3f3f3"
+                primaryColor="#dbd9d9"
                     secondaryColor="#ecebeb"
                   height={250}
                   style={{flex:1}}
-                  width={Dimensions.get('window').width}>
+                  width={Dimensions.get('window').width*0.95}>
 
                   <Rect x={Dimensions.get('window').width/50} y="10" rx="0" ry="0" width={Dimensions.get('window').width/1.04} height="150" /> 
                   <Rect x={Dimensions.get('window').width/50}y="170" rx="0" ry="0" width={Dimensions.get('window').width/1.04} height="19" /> 

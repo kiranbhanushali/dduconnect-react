@@ -35,7 +35,7 @@ export default class PostScreen extends Component{
         return( 
             <View style={{flex:1,flexDirection:'row-reverse',alignItems:'flex-start'}}>
               { data.categories.map((item) => (
-                        <Text style={{fontSize:8,paddingRight:4,color:'#ddd'}}
+                        <Text style={{fontSize:8,paddingRight:4,color:'#ddd',fontFamily:'Montserrat-Bold',fontWeight:'bold'}}
                         key={item}>{CATEFORY_NAMES[item.toString()]}</Text>
              ))
               }

@@ -30,7 +30,7 @@ export default class PostScreen extends Component{
               source={{uri: params.link}}
               onLoad={() => this.hideSpinner()}
               javaScriptEnabled={true}
-              bounces
+             
               pagingEnabled
               scalesPageToFit={true}
               stycontainerStyle={{flex:1,alignItems:'stretch'}}

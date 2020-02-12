@@ -1,10 +1,9 @@
-import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-
+import { createSwitchNavigator, createAppContainer } from "react-navigation"
 import SplashScreen from '../StaticScreens/SplashScreen'
 import Main from '../Main'
 import IntroScreen from '../StaticScreens/IntroScreen'
-const RootStackNavigator = createStackNavigator({
+const RootStackNavigator = createSwitchNavigator({
 	Splash: {
 		screen: SplashScreen,
 		navigationOptions: {

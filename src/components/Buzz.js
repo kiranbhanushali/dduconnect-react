@@ -118,9 +118,9 @@ export default class Buzz extends Component{
 		if(this.state.isLoading){
 			return(
 			 <View style={{flex:1}}>
-           <View style={{flex: 1,justifyContent:'center',padding:10}}>
+           <View style={{flex: 1,justifyContent:'center',width:widthPercentageToDP('97%'),alignSelf:'center',alignContent:'center'}}>
            <SvgAnimatedLinearGradient
-                primaryColor="#f3f3f3"
+                primaryColor="#dbd9d9"
                     secondaryColor="#ecebeb"
                   height={250}
                   style={{flex:1}}
@@ -134,9 +134,9 @@ export default class Buzz extends Component{
    
                  </SvgAnimatedLinearGradient>
 			     </View>
-           <View style={{flex: 1,justifyContent:'center',padding:10}}>
+           <View style={{flex: 1,justifyContent:'center',padding:10,width:widthPercentageToDP('97%'),alignSelf:'center',alignContent:'center'}} >
            <SvgAnimatedLinearGradient
-                primaryColor="#f3f3f3"
+                primaryColor="#dbd9d9"
                     secondaryColor="#ecebeb"
                   height={250}
                   style={{flex:1}}

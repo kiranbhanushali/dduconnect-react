@@ -9,10 +9,14 @@ export default class LatestArticle extends Component{
     
     handleClick = () => {
         const cid = this.props.categoryid;
-
-       this.props.navigation.navigate('PostByCategory',{
-           cid,navigation: this.props.navigation
-       });
+        if(cid==200){
+            this.props.navigation.navigate('PastYearPapers');
+        }else{
+            this.props.navigation.navigate('PostByCategory',{
+                cid,navigation: this.props.navigation
+            });
+        }
+       
     }
     render(){
         
@@ -20,7 +24,7 @@ export default class LatestArticle extends Component{
     return(
         <TouchableOpacity onPress={this.handleClick}>
             
-           <Image  style={{flex:1,width:85,height:85}} source={this.props.source} />
+           <Image  style={{flex:1,width:Dimensions.get('window').width/4.4,height:Dimensions.get('window').width/4.4}} source={this.props.source} source={this.props.source} />
 
         </TouchableOpacity>
     );

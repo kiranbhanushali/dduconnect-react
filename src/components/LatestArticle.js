@@ -71,34 +71,34 @@ export default class LatestArticle extends Component{
 	if(this.state.isLoading){
 		// console.log(this.state.isLoading);
 		return(
-			<View style={{flexDirection:'row',padding:10}}>
+		<View style={{flexDirection:'row',paddingHorizontal:widthPercentageToDP('2%')}}>
 					<ContentLoader 
 			height={110}
-			width={widthPercentageToDP('43%') }
-			speed={2}
-			primaryColor="#f3f3f3"
+			width={widthPercentageToDP('43%')}
+			speed={3}
+			primaryColor="#dbd9d9"
 			secondaryColor="#ecebeb"
 		  >
 		
 		  </ContentLoader>
-		  <View style={{paddingHorizontal:10,}}></View>
+		  <View style={{paddingHorizontal:widthPercentageToDP('2%')}}></View>
 		  <ContentLoader 
 			height={110}
 			width={widthPercentageToDP('43%') }
 			speed={3}
 			
-			primaryColor="#f3f3f3"
+			primaryColor="#dbd9d9"
 			secondaryColor="#ecebeb"
 		  >
 		
 		  </ContentLoader>
-		  <View style={{paddingHorizontal:10,}}></View>
+		  <View style={{paddingHorizontal:widthPercentageToDP('2%')}}></View>
 		  <ContentLoader 
 			height={110}
 			width={widthPercentageToDP('43%') }
 			speed={3}
 			
-			primaryColor="#f3f3f3"
+			primaryColor="#dbd9d9"
 			secondaryColor="#ecebeb"
 		  >
 		
@@ -165,7 +165,7 @@ export default class LatestArticle extends Component{
 										
 										 <Card  transparent>   
 													 
-											<Text style={{ color: '#fff',fontSize:10,fontWeight: 'bold' }}
+											<Text style={{ color: '#fff',fontSize:10,fontFamily:'Montserrat-Bold',fontWeight: 'bold' }}
 												onPress={() => {
 													// console.log(item._embedded['wp:featuredmedia'][0].source_url);
 												 this.props.navigation.navigate('Post',item);
