@@ -52,9 +52,9 @@ export default class ContactUsScreen extends Component{
             <Text style={styles.title}>EMAIL:</Text>
             <Text style={styles.text} onPress={() => Linking.openURL('mailto:dduconnect@gmail.com')}>dduconnect@gmail.com</Text>
             <Text style={styles.title}>FOLLOW US:</Text>
-            <View style={{flex: 1, flexDirection: 'row',justifyContent:'center'}}>
+            <View style={{flex: 1, flexDirection: 'row',alignContent:'center',alignItems:'center'}}>
                   
-
+                 <View style={{height:40,width:40}}>
                      <TouchableHighlight style={{}} onPress={() =>
                                                  Linking.openURL('https://www.instagram.com/dduconnect')}>
                            <SocialIcon
@@ -64,7 +64,9 @@ export default class ContactUsScreen extends Component{
                           />
                         {/* //  <Image source={require('../../assets/images/instagram-logo.png')} style={{height:40, width:40}} /> */}
                          </TouchableHighlight>
-                  
+                        </View>
+
+                         <View style={{height:40,width:40}}>
                     <TouchableHighlight style={{}} onPress={() =>
                                                  Linking.openURL('https://www.facebook.com/dduconnect/')}>
                           {/* <Image source={require('../../assets/images/images.png')} style={{height:40, width:40}} />
@@ -75,7 +77,10 @@ export default class ContactUsScreen extends Component{
                             type='facebook'
                           />
                          </TouchableHighlight>
-                    <TouchableHighlight style={{}} onPress={() =>
+                         </View>
+
+                         <View style={{height:40,width:40}}>
+                        <TouchableHighlight style={{}} onPress={() =>
                                                  Linking.openURL('https://www.linkedin.com/company/ddu-connect/about/')}>
                         {/* <Image source={require('../../assets/images/Li.png')} style={{height:40, width:40}} /> */}
                         <SocialIcon
@@ -84,7 +89,9 @@ export default class ContactUsScreen extends Component{
                             type='linkedin'
                           />
                         </TouchableHighlight>
-                    <TouchableHighlight style={{}} onPress={() =>
+                        </View>
+                        <View style={{height:40,width:40}}>
+                        <TouchableHighlight style={{}} onPress={() =>
                                                  Linking.openURL('https://www.youtube.com/channel/UCL_HeXMG8OnytZZtIRgkpQA')}>
                          {/* <Image source={require('../../assets/images/youtube.png')} style={{height:40, width:40}} /> */}
                          <SocialIcon
@@ -92,6 +99,8 @@ export default class ContactUsScreen extends Component{
                             type='youtube'
                           />
                          </TouchableHighlight>
+                        </View>
+                    
                     
             </View>
         </View>
@@ -124,7 +133,7 @@ const styles = StyleSheet.create({
   },
    container: {
        justifyContent: 'center',
-       marginTop: 50,
+       marginTop: 40,
        padding: 20,
    },
 });

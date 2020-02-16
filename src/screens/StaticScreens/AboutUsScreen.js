@@ -2,6 +2,9 @@ import React,{ Component ,PropType } from 'react';
 import {FlatList,ImageBackground,View,ScrollView,Image,StyleSheet, Dimensions,ActivityIndicator} from 'react-native';
 import { WebView } from 'react-native-webview';
 import {Header,Title,Card,Text,Left,Right,Button,Body,Container,Icon, Row} from 'native-base';
+import YouTube from 'react-native-youtube';
+
+
 
 export default class AboutUsScreen extends Component{
     static navigationOptions = ({navigation}) =>{
@@ -20,30 +23,19 @@ export default class AboutUsScreen extends Component{
     }
     
 	render(){
-        
-        const params = "https://dduconnect.in/about-us";
-       // console.log(params);
+     console.log(this.state);
+     
     return(
     
-        <View style={{ flex:1,justifyContent:'center',alignItems:'stretch',marginTop:-60}}>
-            <WebView
-              source={{uri: params}}
-              onLoad={() => this.hideSpinner()}
-              javaScriptEnabled={true}
-             
-              pagingEnabled
-              scalesPageToFit={true}
-              stycontainerStyle={{flex:1,alignItems:'stretch'}}
-            />
-
-        {this.state.visible && (
-          <ActivityIndicator
-            style={{ position: "absolute",flex:1,justifyContent:'center',alignItems:'center',alignSelf:'center' }}
-            size="large"
-          />
-        )}
-        </View>
-        
+      <YouTube
+      apiKey="AIzaSyDr4ppgGNpCoovzcG8MHDeyqv85K5pHWbU"
+videoId="U7tmi02ctgY" // The YouTube video ID
+onReady={e => this.setState({ isReady: true })}
+onChangeState={e => this.setState({ status: e.state })}
+onChangeQuality={e => this.setState({ quality: e.quality })}
+onError={e => this.setState({ error: e.error })}
+style={{height:250,width:'90%'}}
+/>
         
         
     );  

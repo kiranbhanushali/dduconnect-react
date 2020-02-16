@@ -38,7 +38,11 @@ const CustomDrawerComponent = props => (
                       <Text 
                       style={{fontFamily:'Montserrat-Bold',fontWeight:'900',fontSize:24}}>
                         The_8th_Volume</Text>
-                  <TouchableOpacity onPress={(props)=>{props.navigation.navigate('The8ThVolume')} }  >
+                  <TouchableOpacity onPress={
+                    ()=>{
+                        props.navigation.navigate('The8ThVolume');
+                      }
+                   }  >
                     <Text style={{fontSize: 20,color:'000'}}>Know More</Text>
                   </TouchableOpacity>
         </View>

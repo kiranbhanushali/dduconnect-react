@@ -14,9 +14,8 @@ static navigationOptions = {
 				<Button transparent onPress={this.props.navigation.toggleDrawer}>
 					<Icon name='menu' />
 				</Button>
-				<Text style={{fontFamily:'Montserrat-Bold',fontWeight:'900'}}> ContactUs </Text>
+				<Text style={{fontFamily:'Montserrat-Bold',fontWeight:'900'}}> Copyrights </Text>
 				</Header>  
-
 
 				<View style={styles.container}>
 	
