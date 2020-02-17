@@ -48,6 +48,8 @@ target 'DDU_CONNECT' do
 
   pod 'react-native-pdf', :path => '../node_modules/react-native-pdf'
 
+  pod 'react-native-video', :path => '../node_modules/react-native-video'
+
   target 'DDU_CONNECTTests' do
     inherit! :search_paths
     # Pods for testing

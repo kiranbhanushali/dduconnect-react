@@ -7,7 +7,15 @@ import { Header } from 'react-native-elements';
 export default class AcademicCalenderScreen extends Component{
 
 	render(){
-		const source = {uri:'https://github.com/kiranbhanushali/dduconnect-android/raw/master/app/src/main/assets/academiccalender.pdf',cache:true};
+		const d = this.props.navigation.state.params.d;
+		console.log(d);
+		var source = ''
+		if(d==1){
+			source = {uri:'https://github.com/kiranbhanushali/dduconnect-android/raw/master/app/src/main/assets/academiccalender.pdf',cache:true};
+		}
+		else{
+			source = {uri:'https://github.com/kiranbhanushali/dduconnect-android/raw/master/app/src/main/assets/academiccalender.pdf',cache:true};
+		}
 
 		return (
 			<View style={styles.container}>

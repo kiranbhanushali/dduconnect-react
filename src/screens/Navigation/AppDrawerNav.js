@@ -27,6 +27,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import HomeStackNavigator from './HomeStackNavigator';
 import MeetOurTeamNav from './MeetOurTeamNav';
 import CopyrightsScreen from '../StaticScreens/CopyrightsScreen';
+import AcademicCalenderNav from './AcadamicCalenderNav';
 
 const CustomDrawerComponent = props => (
   <SafeAreaView style={{flex: 1}}>
@@ -81,7 +82,7 @@ const MyDrawerNavigator = createDrawerNavigator(
       },
     },
     AcademicCalender: {
-      screen: AcademicCalenderScreen,
+      screen: AcademicCalenderNav,
       navigationOptions: {
         drawerLabel: 'AcademicCalender',
         drawerIcon: ({tintColor}) => (

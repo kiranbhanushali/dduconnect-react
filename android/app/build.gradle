@@ -187,6 +187,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-video')
     implementation project(':react-native-pdf')
     implementation project(':rn-fetch-blob')
    

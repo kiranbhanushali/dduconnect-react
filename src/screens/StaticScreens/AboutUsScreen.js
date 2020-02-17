@@ -3,6 +3,7 @@ import {FlatList,ImageBackground,View,ScrollView,Image,StyleSheet, Dimensions,Ac
 import { WebView } from 'react-native-webview';
 import {Header,Title,Card,Text,Left,Right,Button,Body,Container,Icon, Row} from 'native-base';
 import YouTube from 'react-native-youtube';
+import Video from 'react-native-video';
 
 
 
@@ -26,16 +27,33 @@ export default class AboutUsScreen extends Component{
      console.log(this.state);
      
     return(
-    
-      <YouTube
-      apiKey="AIzaSyDr4ppgGNpCoovzcG8MHDeyqv85K5pHWbU"
-videoId="U7tmi02ctgY" // The YouTube video ID
-onReady={e => this.setState({ isReady: true })}
-onChangeState={e => this.setState({ status: e.state })}
-onChangeQuality={e => this.setState({ quality: e.quality })}
-onError={e => this.setState({ error: e.error })}
-style={{height:250,width:'90%'}}
-/>
+          <View style={{flex:1,margin:20}}>
+
+<Video source={{uri: "https://youtu.be/U7tmi02ctgY"}}   // Can be a URL or a local file.
+       ref={(ref) => {
+         this.player = ref
+       }}                                      // Store reference
+       onBuffer={this.onBuffer}                // Callback when remote video is buffering
+       onError={this.videoError}               // Callback when video cannot be loaded
+       style={styles.backgroundVideo} />
+               {/* <YouTube
+                  aa="AIzaSyDr 
+                  4ppgGNpCoovzcG8MHDeyqv85K5pHWbU"
+            videoId="U7tmi02ctgY" // The YouTube video ID
+            onReady={e => this.setState({ isReady: true })}
+            onChangeState={e => this.setState({ status: e.state })}
+            onChangeQuality={e => this.setState({ quality: e.quality })}
+            onError={e => this.setState({ error: e.error })}
+            style={{ position: 'absolute',
+            right: 10,
+            top: 40,
+            flexDirection: "row",
+            height: 300,
+            width:300,
+            padding: 10}}
+          /> */}
+        
+          </View>
         
         
     );  
@@ -43,25 +61,13 @@ style={{height:250,width:'90%'}}
 
 }
 
-const styles = StyleSheet.create({
-    stylOld: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    styleNew: {
-      flex: 1,
-    },
-    WebViewStyle: {
-      justifyContent: 'center',
-      alignItems: 'center',
-      flex: 1,
-      marginTop: 40,
-    },
-    ActivityIndicatorStyle: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      position: 'absolute',
-    },
-  });
+
+var styles = StyleSheet.create({
+  backgroundVideo: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+  },
+});
