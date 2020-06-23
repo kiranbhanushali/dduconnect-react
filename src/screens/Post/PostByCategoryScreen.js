@@ -48,10 +48,17 @@ export default class PostByCategoryScreen extends Component{
                 80:"Tech",
             }; 
             const cid = this.props.navigation.state.params.cid;
-        
+            console.log(cid);
             const cname = CATEFORY_LINKS[cid];  
             this.props.navigation.setParams({ headerTitles: cname });
-            const base = `https://dduconnect.in/wp-json/wp/v2/posts/?_embed&&categories=${cid}`;
+            // https://raw.githubusercontent.com/Aatish13/DDUConnectDatabase/master/Category80.json
+
+            var base = `https://raw.githubusercontent.com/Aatish13/DDUConnectDatabase/master/Category${cid}.json`;
+            // if(cid=='173') {
+            //     base = "https://dduconect.in/wp-json/wp/v2/posts/?_embed&&categories=173";
+
+            // }
+            console.log(base);
             
             if(!this.state.articles){
                 return fetch(base)

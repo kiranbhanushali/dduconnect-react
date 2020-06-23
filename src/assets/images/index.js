@@ -14,6 +14,8 @@ const IMAGES = {
     tech : require('./tech.png'),
     verses :  require('./verses.png'),
     writers_launge : require('./writers_launge.png'),
+    gujarati : require('./gujarati.png'),
+    dclogo :  require('./dclogo.png'),
 
  
 };

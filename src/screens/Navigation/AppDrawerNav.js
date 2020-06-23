@@ -23,30 +23,45 @@ import AboutUsScreen from '../StaticScreens/AboutUsScreen';
 import MeetOurTeamScreen from '../MeetOurTeam/MeetOurTeamScreen';
 import ContactUsScreen from '../StaticScreens/ContactUsScreen';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
 import HomeStackNavigator from './HomeStackNavigator';
 import MeetOurTeamNav from './MeetOurTeamNav';
 import CopyrightsScreen from '../StaticScreens/CopyrightsScreen';
 import AcademicCalenderNav from './AcadamicCalenderNav';
+import PrivacyPolicy from '../StaticScreens/PrivacyPolicy';
+import PlacementScreen from '../StaticScreens/PlacementScreen';
+
 
 const CustomDrawerComponent = props => (
   <SafeAreaView style={{flex: 1}}>
         
 
-        <View style={{flex:1,flexDirection:'column',alignItems:'center',alignSelf:'center',justifyContent:'center'}} >
         {/* <Image style={{flex:1}}
                      source={require('../../assets/images/The_8th_Volume2.jpg')} /> */}
-                      <Text 
+    <ImageBackground 
+		 source={require('../../assets/images/eth_bg.jpeg')} 
+		 	style={{flex:1,height:'100%'}}>
+   
+    <ImageBackground 	style={{flex:1}}
+          imageStyle={{flex:1,resizeMode:'contain'}}
+                     source={require('../../assets/images/eth.png')}>
+                  <View style={{flex:1,flexDirection:'column',alignItems:'center',alignSelf:'center',justifyContent:'flex-end'}} >
+                  
+                  {/* <Text 
                       style={{fontFamily:'Montserrat-Bold',fontWeight:'900',fontSize:24}}>
-                        The_8th_Volume</Text>
-                  <TouchableOpacity onPress={
-                    ()=>{
-                        props.navigation.navigate('The8ThVolume');
-                      }
-                   }  >
-                    <Text style={{fontSize: 20,color:'000'}}>Know More</Text>
+                        The 8th Volume</Text> */}
+                  <TouchableOpacity>
+                    <Text onPress={()=>{
+                      // console.log("press");
+                      props.navigation.navigate('The8ThVolume');
+                    }}
+                     style={{fontSize: 20,color:'#fff',padding:4}}>Know More</Text>
                   </TouchableOpacity>
-        </View>
+                  </View>
+                  </ImageBackground>
+      
+			
+		    </ImageBackground>
+                    
 
   
         <View  style={{flex:2}}>
@@ -75,16 +90,25 @@ const MyDrawerNavigator = createDrawerNavigator(
     Favourite: {
       screen: FavouriteScreen,
       navigationOptions: {
-        drawerLabel: 'Favourite',
+        drawerLabel: 'From The Editors Desk',
         drawerIcon: ({tintColor}) => (
-          <Icon type="MaterialIcons" name='favorite' tintColor={tintColor} />
+          <Icon type="MaterialIcons" name='edit' tintColor={tintColor} />
         ),
+      },
+    },
+    PlacementScreen: {
+      screen: PlacementScreen,
+      navigationOptions: {
+        drawerLabel: 'Placement Mania',
+        drawerIcon: ({tintColor}) => (
+          <Icon type="MaterialIcons" name='people' tintColor={tintColor} />
+        )
       },
     },
     AcademicCalender: {
       screen: AcademicCalenderNav,
       navigationOptions: {
-        drawerLabel: 'AcademicCalender',
+        drawerLabel: 'Academic Calender',
         drawerIcon: ({tintColor}) => (
           <Icon type="MaterialIcons" name='today' tintColor={tintColor} />
         )
@@ -93,7 +117,7 @@ const MyDrawerNavigator = createDrawerNavigator(
     AboutUs: {
       screen: AboutUsScreen,
       navigationOptions: {
-        drawerLabel: 'AboutUs',
+        drawerLabel: 'About Us',
         drawerIcon: ({tintColor}) => (
           <Icon type="MaterialCommunityIcons" name='account-badge' tintColor={tintColor} />
           
@@ -103,7 +127,7 @@ const MyDrawerNavigator = createDrawerNavigator(
     MeetOurTeam: {
       screen: MeetOurTeamNav,
       navigationOptions: {
-        drawerLabel: 'MeetOurTeam',
+        drawerLabel: 'Meet Our Team',
         drawerIcon: ({tintColor}) => (
           <Icon type="MaterialIcons" name='people' tintColor={tintColor} />
         )
@@ -112,7 +136,7 @@ const MyDrawerNavigator = createDrawerNavigator(
     ContactUs: {
       screen: ContactUsScreen,
       navigationOptions: {
-        drawerLabel: 'ContactUs',
+        drawerLabel: 'Contact Us',
         drawerIcon: ({tintColor}) => (
           <Icon type="MaterialIcons" name='send' tintColor={tintColor} />
         )
@@ -123,10 +147,26 @@ const MyDrawerNavigator = createDrawerNavigator(
       navigationOptions: {
         drawerLabel: 'Copyrights',
         drawerIcon: ({tintColor}) => (
-          <Icon  name='copy' tintColor={tintColor} />
+          <Image
+          style={{width: 25, height:25}}
+          source={require('../../assets/images/copyrights.jpeg')}
+        />
+        )
+      },
+    },
+    PrivacyPolicy:{
+      screen:PrivacyPolicy,
+      navigationOptions: {
+        drawerLabel: 'Privacy Policy',
+        drawerIcon: ({tintColor}) => (
+          <Image
+          style={{width: 25, height:25}}
+          source={require('../../assets/images/privacy.jpeg')}
+        />
         )
       },
     }
+
   },
   {
     initialRouteName: 'Home',

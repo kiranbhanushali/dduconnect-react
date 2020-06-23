@@ -20,7 +20,6 @@ export default class ContactUsScreen extends Component{
       // Try setting `flexDirection` to `column`.
       <View style={{
              flex: 1,
-             flexWrap:'wrap',
              flexDirection: 'column',
              //justifyContent: 'center',
              alignItems: 'stretch',
@@ -31,13 +30,13 @@ export default class ContactUsScreen extends Component{
           <Button transparent onPress={this.props.navigation.toggleDrawer}>
             <Icon name='menu' />
           </Button>
-          <Text style={{fontFamily:'Montserrat-Bold',fontWeight:'900'}}> ContactUs </Text>
+          <Text style={{fontFamily:'Montserrat-Bold',fontWeight:'900'}}> Contact Us </Text>
           </Header>     
 
         <View style={{flex:3, backgroundColor:'powderblue'}}>
             <Text style={styles.title}>GET IN TOUCH</Text>
             <View style={styles.container}>
-                    <Form type={User}/>
+                    {/* <Form type={User}/> */}
                     <TouchableOpacity style={{alignSelf:'center',borderColor:'000',borderWidth:2,padding:5}} onPress={() => Linking.openURL('mailto:dduconnect@gmail.com')}><Text>Send Message</Text></TouchableOpacity>
             </View>
         </View>
@@ -52,7 +51,7 @@ export default class ContactUsScreen extends Component{
             <Text style={styles.title}>EMAIL:</Text>
             <Text style={styles.text} onPress={() => Linking.openURL('mailto:dduconnect@gmail.com')}>dduconnect@gmail.com</Text>
             <Text style={styles.title}>FOLLOW US:</Text>
-            <View style={{flex: 1, flexDirection: 'row',alignContent:'center',alignItems:'center'}}>
+            <View style={{flex: 1, flexDirection: 'row',alignContent:'center',alignItems:'center',alignContent:'center'}}>
                   
                  <View style={{height:40,width:40}}>
                      <TouchableHighlight style={{}} onPress={() =>

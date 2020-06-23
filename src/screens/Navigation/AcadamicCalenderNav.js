@@ -1,3 +1,7 @@
+import React, { Component } from 'react';
+import { View, Text, Image, StyleSheet, TextInput, Linking, TouchableHighlight } from 'react-native';
+
+import Left from 'native-base'
 import { createStackNavigator } from 'react-navigation-stack';
 import { createSwitchNavigator, createAppContainer } from "react-navigation"
 import AcademicCalenderScreen from '../StaticScreens/AcademicCalenderScreen';
@@ -13,8 +17,8 @@ const AcademicCalenderNav = createStackNavigator({
     AcademicCalender: {
 		screen: AcademicCalenderScreen,
 		navigationOptions: {
-		header: null
-		}
+			title:'Academic Calender'
+			}
 	},
 },
 {

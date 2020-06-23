@@ -96,7 +96,7 @@ def enableSeparateBuildPerCPUArchitecture = false
 /**
  * Run Proguard to shrink the Java bytecode in release builds.
  */
-def enableProguardInReleaseBuilds = false
+def enableProguardInReleaseBuilds = true
 
 /**
  * The preferred build flavor of JavaScriptCore.
@@ -120,6 +120,18 @@ def jscFlavor = 'org.webkit:android-jsc:+'
  */
 def enableHermes = project.ext.react.get("enableHermes", false);
 
+buildscript {
+    repositories {
+        maven { url 'https://plugins.gradle.org/m2/' } // Gradle Plugin Portal 
+    }
+    dependencies {
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.12.1, 0.99.99]'
+    }
+}
+
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+
+
 android {
     compileSdkVersion 28
     buildToolsVersion "28.0.3"
@@ -136,11 +148,12 @@ android {
        pickFirst 'lib/armeabi-v7a/libc++_shared.so'
      }
     defaultConfig {
-        applicationId "com.ddu_connect"
+        applicationId "com.dduconnect.dduconnect"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 108
+        versionName "1.0.8"
+        
     }
     splits {
         abi {
@@ -157,6 +170,14 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+	release {
+            if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
+                storeFile file('keyStore.jks')
+            storePassword 'dduconnect'
+            keyAlias 'key0'
+            keyPassword 'dduconnect'
+            }
+        }
     }
     buildTypes {
         debug {
@@ -165,7 +186,7 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://facebook.github.io/react-native/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
@@ -187,6 +208,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-onesignal')
     implementation project(':react-native-video')
     implementation project(':react-native-pdf')
     implementation project(':rn-fetch-blob')

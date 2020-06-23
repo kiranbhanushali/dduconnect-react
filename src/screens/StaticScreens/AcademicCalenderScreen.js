@@ -11,20 +11,20 @@ export default class AcademicCalenderScreen extends Component{
 		console.log(d);
 		var source = ''
 		if(d==1){
-			source = {uri:'https://github.com/kiranbhanushali/dduconnect-android/raw/master/app/src/main/assets/academiccalender.pdf',cache:true};
+			source = {uri:'https://kiranbhanushali.github.io/DDUConnect/ac1.pdf',cache:true};
 		}
 		else{
-			source = {uri:'https://github.com/kiranbhanushali/dduconnect-android/raw/master/app/src/main/assets/academiccalender.pdf',cache:true};
+			source = {uri:'https://kiranbhanushali.github.io/DDUConnect/academiccalender.pdf',cache:true};
 		}
 
 		return (
 			<View style={styles.container}>
-				 <Header backgroundColor='fff' >
+				 {/* <Header backgroundColor='fff' >
           <Button transparent onPress={this.props.navigation.toggleDrawer}>
             <Icon name='menu' />
           </Button>
-          <Text style={{fontFamily:'Montserrat-Bold',fontWeight:'900'}}> AcademicCalender </Text>
-          </Header>  
+          <Text style={{fontFamily:'Montserrat-Bold',fontWeight:'900'}}> Academic Calender </Text>
+          </Header>   */}
 			<Pdf
 				source={source}
 				onLoadComplete={(numberOfPages,filePath)=>{
@@ -50,7 +50,6 @@ export default class AcademicCalenderScreen extends Component{
 const styles = StyleSheet.create({
     container: {
 		flex: 1,
-		
         justifyContent: 'flex-start',
         alignItems: 'center',
         marginTop:-20,

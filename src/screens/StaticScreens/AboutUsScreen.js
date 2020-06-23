@@ -1,19 +1,12 @@
 import React,{ Component ,PropType } from 'react';
 import {FlatList,ImageBackground,View,ScrollView,Image,StyleSheet, Dimensions,ActivityIndicator} from 'react-native';
 import { WebView } from 'react-native-webview';
-import {Header,Title,Card,Text,Left,Right,Button,Body,Container,Icon, Row} from 'native-base';
-import YouTube from 'react-native-youtube';
-import Video from 'react-native-video';
-
-
+import {Title,Card,Text,Left,Right,Button,Body,Container,Icon, Row} from 'native-base';
+import {Header} from 'react-native-elements'
+import YouTube from 'react-native-youtube'
 
 export default class AboutUsScreen extends Component{
-    static navigationOptions = ({navigation}) =>{
-		return {
-			headerTitle: <Header> AboutUs </Header>,
-		}
-
-	}
+  
     constructor(props) {
         super(props);
         this.state = { visible: true };
@@ -24,50 +17,65 @@ export default class AboutUsScreen extends Component{
     }
     
 	render(){
-     console.log(this.state);
-     
+        
+        const params = "https://dduconnect.in/about-us";
+       // console.log(params);
     return(
-          <View style={{flex:1,margin:20}}>
-
-<Video source={{uri: "https://youtu.be/U7tmi02ctgY"}}   // Can be a URL or a local file.
-       ref={(ref) => {
-         this.player = ref
-       }}                                      // Store reference
-       onBuffer={this.onBuffer}                // Callback when remote video is buffering
-       onError={this.videoError}               // Callback when video cannot be loaded
-       style={styles.backgroundVideo} />
-               {/* <YouTube
-                  aa="AIzaSyDr 
-                  4ppgGNpCoovzcG8MHDeyqv85K5pHWbU"
-            videoId="U7tmi02ctgY" // The YouTube video ID
+    
+        <View style={{ flex:1,justifyContent:'center',marginTop:-20}}>
+        <Header backgroundColor='fff'>
+          <Button transparent onPress={this.props.navigation.toggleDrawer}>
+            <Icon name='menu' />
+          </Button>
+          <Text style={{fontFamily:'Montserrat-Bold',fontWeight:'900'}}> About Us </Text>
+          </Header>  
+          <WebView
+            style={{ alignSelf: 'stretch', margin:15 }}
+            source={{uri: 'https://www.youtube.com/embed/U7tmi02ctgY?rel=0&autoplay=1&showinfo=0&loop=1'}}
+          />
+          {/* <YouTube
+            apiKey="AIzaSyCGu4PWX1orSkGgQwBGHbM5TNiEaDm61Ic"
+            videoId="U7tmi02ctgY"
+            play={true}
+            fullscreen={false}
             onReady={e => this.setState({ isReady: true })}
             onChangeState={e => this.setState({ status: e.state })}
             onChangeQuality={e => this.setState({ quality: e.quality })}
             onError={e => this.setState({ error: e.error })}
-            style={{ position: 'absolute',
-            right: 10,
-            top: 40,
-            flexDirection: "row",
-            height: 300,
-            width:300,
-            padding: 10}}
+            style={{ alignSelf: 'stretch', height: 300, marginHorizontal:30 }}
           /> */}
-        
-          </View>
-        
-        
+            <ScrollView style={{flex:1,padding:40}}>
+              <Text style={{alignItems:"center",textAlign:"center",marginBottom:35, letterSpacing:1, lineHeight:20}}>
+              DDU Connect began on 17th March, 2012 with an aim to ‘Connect’ various departments of Dharmsinh Desai University and showcasing the hidden creativity of its students. The journey began with a 16 page tabloid whose tagline was “By the students, for the students”. DDU Connect contains all the latest happenings of various departments of the university. It also contains the latest placement statistics and interviews of various eminent personalities across the country and alumni of the university. DDU Connect has grown exponentially since its launch. It held a Photography exhibition and played an active part in the University Foundation Day event, which witnessed a Guinness record being established. After evolving into a 20 page tabloid, Connect has now decided to adopt the noble idea of “GO GREEN”, under which it has become completely digital with “Inking Imaginations” as its tagline. Apart from all these, DDU Connect has also started to organize various events throughout the year. Connect with us to witness some of the University’s great moments and always stay updated about the institution.
+
+              </Text>
+            </ScrollView>
+
+        </View>  
     );  
 }
 
 }
 
-
-var styles = StyleSheet.create({
-  backgroundVideo: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
-  },
-});
+const styles = StyleSheet.create({
+    stylOld: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    styleNew: {
+      flex: 1,
+    },
+    WebViewStyle: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      flex: 1,
+      marginTop: 40,
+    },
+    ActivityIndicatorStyle: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      position: 'absolute',
+    },
+  });

@@ -40,7 +40,7 @@ export default class LatestArticle extends Component{
                 <CircleViewClick navigation={this.props.navigation} categoryid='90' source={IMAGES.open_letter}/>
                 <CircleViewClick navigation={this.props.navigation} categoryid='91' source={IMAGES.verses} />
                 <CircleViewClick navigation={this.props.navigation} categoryid='81' source={IMAGES.writers_launge}/>  
-     
+                <CircleViewClick navigation={this.props.navigation} categoryid='173' source={IMAGES.gujarati}/>
             </View> 
           </CollapseBody>
         </Collapse>

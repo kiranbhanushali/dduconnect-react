@@ -1,11 +1,10 @@
 import React,{ Component ,PropType } from 'react';
 import {FlatList,ImageBackground,View,ScrollView,Image, Dimensions,ActivityIndicator} from 'react-native';
 import {Header,Title,Card,Text,Left,Right,Button,Body,Container,Icon, CardItem,} from 'native-base';
-
+import moment from "moment";
 import {widthPercentageToDP , heightPercentageToDP } from 'react-native-responsive-screen';
 import SvgAnimatedLinearGradient from 'react-native-svg-animated-linear-gradient'
 import Svg, {Circle, Rect, } from 'react-native-svg'
-import LinearGradient from 'react-native-linear-gradient';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
@@ -39,7 +38,7 @@ export default class Buzz extends Component{
                 80:"Tech",
             }; 
             
-            const base = `https://dduconnect.in/wp-json/wp/v2/posts/?_embed&categories=167`;
+            const base = `https://raw.githubusercontent.com/Aatish13/DDUConnectDatabase/master/Buzz.json`;
 
             if(!this.state.articles){
                 return fetch(base)
@@ -115,6 +114,7 @@ export default class Buzz extends Component{
     return tempdetails;
   }
 	render(){
+    // console.log(this.state.articles)
 		if(this.state.isLoading){
 			return(
 			 <View style={{flex:1,justifyContent:'center',width:widthPercentageToDP('97%'),alignSelf:'center',alignContent:'center'}}>
@@ -169,29 +169,31 @@ export default class Buzz extends Component{
                            this.props.navigation.navigate('Post',item);
 											}} 							
 						> 
-							<Card style={{borderRadius: 20 }}>
+							<Card style={{borderRadius: 10 }}>
 							<ImageBackground 
 									source={{
 											uri:   item._embedded['wp:featuredmedia'][0].source_url,
 											}}
-									style={{ flex:1, height:150 }}
+									style={{ flex:1, height:150, }}
 									imageStyle={{borderTopRightRadius:10,borderTopLeftRadius:10,flex:1,width:'100%'}}>
 						
-									<View style={{flex:1,flexDirection:'column'}}>
+									<View style={{flex:1,flexDirection:'column',}}>
 										<View style={{
 												flex:1,flexDirection:'column-reverse',padding:5,
 											}}>
 										
-										<LinearGradient
-          colors={[ 'transparent','rgba(0,0,0,0.8)']}
-          style={{
-            position: 'absolute',
-            left: 0,
-            right: 0,
-            top: 0,
-            height: 150,
-          }}
-        />
+										<View
+            style={{
+              position: 'absolute',
+
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(0,0,0,0.35)'
+			  ,
+			  height:150
+            }}></View>
 										 <Card  transparent>            
 											<Text style={{ color: '#fff',fontSize:15, fontWeight: 'bold' }}
 												onPress={() => {
@@ -208,14 +210,24 @@ export default class Buzz extends Component{
 									</View>
 									
 								</ImageBackground>
-                
-								<CardItem>
-											<Text style={{fontSize:10}} numberOfLines={3}>
+                      
+											<Text style={{fontSize:10,marginTop:8,padding:10}} numberOfLines={3}>
 												{this.content(item)} 
                         {/* item.excerpt.rendered */}
 											</Text>
+                      <View style={{flex:1,flexDirection:'row-reverse',justifyContent:'space-between',padding:10}}>
+                            <TouchableOpacity onPress={()=>{
+                              this.props.navigation.navigate('Post',item)}
+                              } style={{alignItems:'flex-end',}}>
+                            <Text style={{fontSize:10,color:'#0d254a',alignSelf:'flex-end',fontWeight:"900",fontFamily:'Montserrat-Bold'}}> Read More..... </Text>
+                          </TouchableOpacity>
 
-								</CardItem>
+                          <Text style={{fontSize:10,color:'#555',alignSelf:'flex-start',fontFamily:'Montserrat-Light'}}>
+                            {moment(item.date).format("MMMM D, YYYY")}
+                          </Text>
+                          
+                        </View>
+
 
 							</Card>
               </TouchableOpacity>

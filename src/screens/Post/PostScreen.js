@@ -19,18 +19,22 @@ export default class PostScreen extends Component{
         this.setState({ visible: false });
     }
     
+    
 	render(){
         
         const { params } = this.props.navigation.state;
        // console.log(params);
     return(
     
-        <View style={{ flex:1,justifyContent:'center',alignItems:'stretch',marginTop:-60}}>
+        <View style={{ flex:1,justifyContent:'center',alignItems:'stretch',marginTop:-62}}>
             <WebView
               source={{uri: params.link}}
               onLoad={() => this.hideSpinner()}
               javaScriptEnabled={true}
-             
+              onShouldStartLoadWithRequest={request => {
+    console.log(request)
+    return false
+}}
               pagingEnabled
               scalesPageToFit={true}
               stycontainerStyle={{flex:1,alignItems:'stretch'}}

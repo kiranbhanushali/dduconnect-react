@@ -27,6 +27,7 @@ export default class PostScreen extends Component{
             "121":"More Content",
             "84":"Non-Tech",
             "80":"Tech",
+            "173":"આપણી-ગુજરાતી-આપણું-ગૌરવ",
         };
         global.CATEFORY_NAMES=CATEFORY_NAMES;
         const data = this.props.data;

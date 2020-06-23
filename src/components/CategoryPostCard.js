@@ -66,26 +66,20 @@ export default class CategoryPostCard extends Component{
 
 
 	render(){
-   
+        console.log(this.props.item);
 
     return(
         <View key = {this.props.item.id} style={{flex:1,width:'97%',alignContent:'center',alignSelf:'center',borderRadius:10,paddingBottom:5}}>
+            <TouchableOpacity activeOpacity={0.9} onPress={()=>{
+                              this.props.navigation.navigate('Post',this.props.item)}
+                              } >
             <Card key = {this.props.item.id} style={{borderRadius:10,paddingBottom:5}}>
                 
                    
                       <Image style={{width:'100%',height:150,borderTopLeftRadius:10,borderTopRightRadius:10}} source={{uri: this.props.item._embedded['wp:featuredmedia'][0].source_url }} />
                   
-                   <LinearGradient
-								colors={['rgba(0,0,0,0.3)', 'transparent','rgba(0,0,0,0.5)']}
-								style={{borderTopLeftRadius:10,borderTopRightRadius:10,
-									position: 'absolute',
-									left: 0,
-									right: 0,
-									top: 0,
-									height: 150,
-								}}
-								/>
-                  <View style={{flexDirection:'row',flex:1,paddingLeft:10}}>
+                
+                  <View style={{flexDirection:'row',flex:1,paddingLeft:10,paddingBottom:15,marginTop:5}}>
                      <Text style={{fontSize:18,flex:8,fontFamily:'Montserrat-Bold',fontWeight:'900'}}>{this.state.title}</Text>
                      {/* <TouchableOpacity  style={{alignItems:'flex-end',}} onPress={this._onPressButton}>
                         <Icon name="heart"></Icon>
@@ -93,23 +87,25 @@ export default class CategoryPostCard extends Component{
                   </View>  
                 
                     <View style={{paddingHorizontal:10}}>
-                        <Text numberOfLines={5} style={{fontSize:12,fontWeight:"400",fontFamily:'Montserrat-Bold',color:'#888'}}>
+                        <Text numberOfLines={5} style={{fontSize:12,paddingBottom:10,fontWeight:"400",fontFamily:'Montserrat-Light',color:'#1f1f1f'}}>
                             {this.state.tempdetails} 
                         </Text>
-                        <View style={{flexDirection:'row-reverse',justifyContent:'space-between',paddingTop:5}}>
-                            <TouchableOpacity onPress={()=>{
-                              this.props.navigation.navigate('Post',this.props.item)}
-                              } style={{alignItems:'flex-end',}}>
-                            <Text style={{fontSize:10,color:'blue',alignSelf:'flex-end',fontFamily:'Montserrat-Bold'}}> Read more </Text>
-                          </TouchableOpacity>
+                        <View style={{flexDirection:'row-reverse',justifyContent:'space-between',paddingTop:5,marginBottom:5}}>
+                            <View style={{alignItems:'flex-end',}}>
+                            <Text style={{fontSize:10,color:'#0d254a',alignSelf:'flex-end',fontWeight:"900",fontFamily:'Montserrat-Bold'}}> Read more... </Text>
+                        
+                            </View>
+                           
+                            
 
-                          <Text style={{fontSize:10,color:'#555',alignSelf:'flex-start',fontFamily:'Montserrat-Bold'}}>
+                          <Text style={{fontSize:10,color:'#555',alignSelf:'flex-start',fontFamily:'Montserrat-Light'}}>
                             {moment(this.props.item.date).format("MMMM D, YYYY")}
                             </Text>
                           
                         </View>
                       </View>
-            </Card>  
+            </Card> 
+            </TouchableOpacity> 
         </View>
  
     );

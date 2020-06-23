@@ -37,7 +37,7 @@ export default class MembersScreen extends Component {
           console.error(error);
         });
     }
-    console.log(this.props);
+    // console.log(this.props);
   }
   constructor(props) {
     super(props);
@@ -48,7 +48,7 @@ export default class MembersScreen extends Component {
   render() {
     if (this.state.isLoading) {
       return (
-        <View style={{flex: 1}}>
+        <View style={{flex: 1,justifyContent:'center',alignSelf:'center'}}>
           <ActivityIndicator size="large" color="#0000ff" />
         </View>
       );
