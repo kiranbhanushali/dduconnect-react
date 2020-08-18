@@ -17,8 +17,8 @@ export default class SplashScreen extends Component{
 	render(){
 	return(
 		<View style={{flex:1,flexDirection: 'column',height:'100%' ,alignItems:'center',justyfyContent:'center'}}> 
-			 <Image style={{width:'100%',height:'100%',justyfyContent:'center',alignItems:'center'}}
-		source={require('../../assets/images/splash_bg.png')} />
+			 <Image style={{width:'100%',height:'100%',justyfyContent:'center',alignItems:'center', marginTop:'36%', marginRight:'5%'}}
+		source={require('../../assets/images/dc_logo_vol9.png')} />
 		 {/* <ImageBackground 
 		 source={require('../../assets/images/splash_bg1.jpg')} 
 		 	style={{width:'100%',height:'100%',justyfyContent:'center',alignItems:'center'}}>

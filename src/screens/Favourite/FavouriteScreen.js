@@ -43,33 +43,21 @@ export default class FavouriteScreen extends Component{
                 <Text style={{ fontWeight: 'bold' ,
       color: 'white'}}>
                   {' '}
-                  When Success Reveals its Secrets
+                  It’s all about taking the first step.
                 </Text>
                 {'\n'}
                 {'\n'}
-                Have you ever compared the life of a bird and an ant? When their
-                shelters are concerned, the birds isolate themselves from their
-                own species and work tirelessly towards weaving its nest. While,
-                it takes generations for ants to build their little home. But what
-                happens when storm hit them? Where birds fly off from their nests
-                for better shelters, the anthill roar louder than storm to protect
-                its creators.
+                We all know about the growth of an eye-catching butterfly from an ugly looking caterpillar. Despite the cocoon being the comfort zone of the caterpillar, it has to take its first step that is to say to emerge from being in a cocoon. This process of metamorphosis is a great symbol for change, transition, adaptation, and growth. Comfort zones are simply our unchartered waters where our unrealized dreams are buried. Success begins when we step out of this zone. We must always trust our process, even if sometimes along the way things seem to be uncertain or nearly impossible.
                 {'\n'}
                 {'\n'}
-                In life, we are often disappointed by the success of an
-                undeserving candidate. But if we compare their success stories
-                with the stories of successful tycoons, we find the few chapters
-                to be missing.These chapters talk about dedication, sincerity and
-                team-spirit. Now, it is unto us if we want to weep on our failure
-                like the little bird or, to add these missing chapters towards
-                building our success story.
+                With never-ending possibilities in paving way for creativity, DDU Connect has taken a step forward in its sublime journey. Get ready to indulge yourselves in the world of uniqueness. Our writers are ready to take you to a new expedition through the Open Letter, Fiction, ‘Tech’ It Easy, Connect-ions and Writer’s Lounge. Get to know the various events taking place in the university through the DDU Buzz. Also for the creative minds of our university, we are soon bringing back our art related page named ‘Artisic Visions’.
                 {'\n'}
                 {'\n'}
                 We, as always, await your stories of adventures and experiences at
                 dduconnect@gmail.com.
   {'\n'}
                 {'\n'}
-                Nirmal Sunil{'\n'}
+                Sruthi Cheruvullil{'\n'}
         <Text style={{ fontWeight: 'bold',
       color: 'white' }}>         
   Editor-in-Chief</Text>

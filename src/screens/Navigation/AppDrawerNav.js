@@ -29,6 +29,7 @@ import CopyrightsScreen from '../StaticScreens/CopyrightsScreen';
 import AcademicCalenderNav from './AcadamicCalenderNav';
 import PrivacyPolicy from '../StaticScreens/PrivacyPolicy';
 import PlacementScreen from '../StaticScreens/PlacementScreen';
+import event from '../Events/event';
 
 
 const CustomDrawerComponent = props => (
@@ -38,23 +39,25 @@ const CustomDrawerComponent = props => (
         {/* <Image style={{flex:1}}
                      source={require('../../assets/images/The_8th_Volume2.jpg')} /> */}
     <ImageBackground 
-		 source={require('../../assets/images/eth_bg.jpeg')} 
+		 source={require('../../assets/images/bg-1.png')} 
 		 	style={{flex:1,height:'100%'}}>
    
     <ImageBackground 	style={{flex:1}}
-          imageStyle={{flex:1,resizeMode:'contain'}}
-                     source={require('../../assets/images/eth.png')}>
+          imageStyle={{ bottom: 0}}
+                     source={require('../../assets/images/homepage_mobile-1.png')}>
                   <View style={{flex:1,flexDirection:'column',alignItems:'center',alignSelf:'center',justifyContent:'flex-end'}} >
                   
                   {/* <Text 
                       style={{fontFamily:'Montserrat-Bold',fontWeight:'900',fontSize:24}}>
                         The 8th Volume</Text> */}
-                  <TouchableOpacity>
-                    <Text onPress={()=>{
+                  <TouchableOpacity style={{shadowOpacity:0}}>
+                    
+                    <Button onPress={()=>{
                       // console.log("press");
-                      props.navigation.navigate('The8ThVolume');
+                      props.navigation.navigate('The9ThVolume')
                     }}
-                     style={{fontSize: 20,color:'#fff',padding:4}}>Know More</Text>
+                     color="(0,0,0,0.0)"
+                     title="Know More"></Button>
                   </TouchableOpacity>
                   </View>
                   </ImageBackground>
@@ -83,9 +86,17 @@ const MyDrawerNavigator = createDrawerNavigator(
           <Icon  name='home' tintColor={tintColor} />
         
         ),
-
       }
-      // navigation options in rootstack navigator
+    },
+    Events: {
+      screen: event,
+      navigationOptions:{
+        drawerLabel: 'Events',
+        drawerIcon: ({tintColor}) => (
+          <Icon  type="MaterialIcons" name='assistant' tintColor={tintColor} />
+        
+        ),
+      }
     },
     Favourite: {
       screen: FavouriteScreen,

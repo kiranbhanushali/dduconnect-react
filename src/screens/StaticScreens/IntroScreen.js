@@ -1,5 +1,6 @@
 import React  , { Component ,PropType } from 'react';
-import { View ,Text ,} from 'react-native';
+import { View ,Text ,TouchableOpacity} from 'react-native';
+import {Button} from 'native-base';
 import Main from '../Main'
 import AppIntroSlider from 'react-native-app-intro-slider';
 import IntroScreenDetails from '../../static/IntroScreenDetails';
@@ -12,8 +13,8 @@ export default class IntroScreen extends Component{
    }
    _renderNextButton = () => {
     return (
-      <View style={{flex:1}}>
-         <Text > Next </Text> 
+      <View style={{flex:1 }}>
+        <Text >Next</Text>
       </View>
     );
   };
@@ -22,8 +23,8 @@ export default class IntroScreen extends Component{
 
     return (
      <View  >
-    
-              <Text > I Accept </Text>
+       
+              <Text>I Accept </Text>  
       </View>
     );
   };

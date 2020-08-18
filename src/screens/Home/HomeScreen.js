@@ -1,6 +1,6 @@
 import React,{ Component ,PropType } from 'react';
 import {FlatList,ImageBackground,View,Modal,ActivityIndicator,TouchableHighlight,ScrollView,Image,Alert, Dimensions,StyleSheet,Picker} from 'react-native';
-import {Header,Separator,Title,Card,Text,Left,Right,Button,Body,Container,Icon, Row,} from 'native-base';
+import {Header,Separator,Title,Card,Button,Text,Left,Right,Body,Container,Icon, Row,} from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
 import Buzz from '../../components/Buzz'
 import LatestArticle from '../../components/LatestArticle'
@@ -8,24 +8,35 @@ import TOTM from '../../components/TOTM'
 import Category from '../../components/Category'
 import OneSignal from 'react-native-onesignal';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { white } from 'color-name';
+import AboutUsScreen from '../StaticScreens/AboutUsScreen';
+import MeetOurTeamScreen from '../MeetOurTeam/MeetOurTeamScreen';
 
-  
+import { createStackNavigator } from 'react-navigation-stack';
+
+const RootStack = createStackNavigator(
+	{
+		AboutUs: { screen: AboutUsScreen },
+		MeetOurTeam: {screen: MeetOurTeamScreen }
+	});
+	const image = { uri: "https://raw.githubusercontent.com/kiranbhanushali/DDUConnectDatabase/master/notificationbg.jpeg" };
 export default class HomeScreen extends Component{
 	static navigationOptions = ({navigation}) =>{
 		return {
-			headerTitle: <Text style={{fontFamily:'Montserrat-Bold',fontWeight:'900'}}> DDUConnect </Text>,
+			headerTitle: <Text style={{fontFamily:'Montserrat-Bold',fontWeight:'900'}}> DDU Connect </Text>,
 			headerLeft: (
 				<Button transparent  onPress={navigation.toggleDrawer}>
 					<Icon name='menu'  />
 				</Button>
 			),
+
 			
 		}
 
 	}
 	constructor(properties) {
 		super(properties);
-		this.state ={ isLoading: true, modalVisible: false,firstTime:true,link_for_vote:"https://docs.google.com/forms/d/e/1FAIpQLSdiNAAuB_EzclqTiq3qX5DvtW7GxZzdsqeJmTEiXYfc1GUU5Q/viewform"}
+		this.state ={ isLoading: true, posterVisible: false, buttonOpacity:0.7,webpage_url:"", bg_url:"",btn_text:"",modalVisible: false,firstTime:true,link_for_vote:"https://docs.google.com/forms/d/e/1FAIpQLSdiNAAuB_EzclqTiq3qX5DvtW7GxZzdsqeJmTEiXYfc1GUU5Q/viewform"}
 		
 		OneSignal.init("a049d642-1cbe-4905-9167-2fd53771083a", {kOSSettingsKeyAutoPrompt : true});// set kOSSettingsKeyAutoPrompt to false prompting manually on iOS
 
@@ -38,9 +49,8 @@ export default class HomeScreen extends Component{
 	  componentDidMount(){
 		// Start counting when the page is loaded
 
-			this.timer = setInterval(()=> this.getMovies(), 5000)
-	
-
+			// this.timer = setInterval(()=> this.getPosterStatus(), 5000)
+			this.getPosterStatus()
 		// AsyncStorage.getItem('firstTime').then(
 		// 	value =>{
 		// 		console.log(value);
@@ -83,6 +93,11 @@ export default class HomeScreen extends Component{
 	  setModalVisible(visible) {
 		this.setState({modalVisible: visible});
 	  }
+
+	  hidePoster(){
+		  this.setState({posterVisible: false});
+	  }
+
 	  goforvote=(x)=>{
 		  
 		Alert.alert(
@@ -114,7 +129,7 @@ export default class HomeScreen extends Component{
 		  
 		if(this.state.firstTime==true){
 			console.log("get ");
-		fetch('https://raw.githubusercontent.com/Aatish13/DDUConnectDatabase/master/votingStatus.json', {method: "GET"})
+		fetch('https://raw.githubusercontent.com/Aatish13/DDUConnectDatabase/master/Notification.json', {method: "GET"})
 		 .then((response) => response.json())
 		 .then((responseData) =>
 		 {
@@ -138,7 +153,28 @@ export default class HomeScreen extends Component{
 		
 	   }
 		
-	
+	  async getPosterStatus(){
+		   console.log("in poster status");
+		   
+		   fetch('https://raw.githubusercontent.com/kiranbhanushali/DDUConnectDatabase/master/Notification.json', {method: "GET"})
+		   .then((response) => response.json())
+		 .then((responseData) =>
+			{
+				console.log(responseData)
+				this.setState({posterVisible: responseData.posterVisible})
+				// this.setState({bg_url: responseData.bg_img})
+				this.setState({webpage_url: responseData.webpage_url})
+				this.setState({btn_text: responseData.btn_text})
+				this.setState({buttonOpacity: responseData.buttonOpacity})
+				// this.state.bg_url = { uri: this.state.bg_url };
+				// console.log(this.state.bg_url);	
+
+				console.log(image);
+				
+			})	
+	   }
+
+
 	render(){
 		
 		
@@ -149,13 +185,49 @@ export default class HomeScreen extends Component{
 		// 	  </View>
 		// 	)
 		// }
-		
 		return(
 			<Container style={styles.container}>
 					
-			<View style={{height:100,width:100,justifyContent:'center',alignItems:'center',position:"absolute",justifyContent:"center",alignItems:"center"}}>
+			{/* <View style={{height:100,width:100,justifyContent:'center',alignItems:'center',position:"absolute",justifyContent:"center",alignItems:"center"}}>
 			 { this.state.firstTime && this.state.modalVisible && this.goforvote(this)}
-				</View>
+				</View> */}
+
+			<View>
+				<Modal
+					onRequestClose={() => this.hidePoster()}
+					animationType="fade"
+					transparent={true}
+					visible={this.state.posterVisible}>
+					<View style={{flex:1,justifyContent:'center', alignItems:'center', backgroundColor:'rgba(0,0,0,0.5)'}}>
+				
+					<View style={{height:'60%', width:'80%', borderRadius:30, justifyContent:'center',alignItems:'center'}}>
+						<ImageBackground source={image} style={{ resizeMode: 'cover', width:'100%', borderRadius:30, justifyContent:'center', alignItems:'center' }} >
+						<Button
+							
+							style={{ marginTop:'100%', opacity:this.state.buttonOpacity ,height:'8%', backgroundColor:'black',borderRadius:20, alignItems:'center', justifyContent:'center'}}
+							onPress={() => {
+								this.hidePoster();
+								this.props.navigation.navigate('AlertWebView',{link :this.state.webpage_url});
+							}}
+							>
+							<Text style={{color: 'white', opacity:1,fontSize:15}}>{this.state.btn_text}</Text>
+						</Button>
+						</ImageBackground>
+
+						<Button
+							style={{margin:5, height:'7%', opacity:0.7, backgroundColor:'black' ,borderRadius:20, alignItems:'center',justifyContent:'center'}}
+							onPress={() => {
+								this.hidePoster();
+							}}
+							title="Close"
+							>
+							<Text style={{color: 'white',fontSize:15}}>Close</Text>
+						</Button> 
+
+					</View>
+					</View>
+				</Modal>
+			</View>
 
 			<ScrollView>
 

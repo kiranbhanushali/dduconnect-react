@@ -11,8 +11,8 @@ const IntroScreenDetails = [
   {
     key: 'somethun-dos',
     title: 'Features and Updates',
-    text: ` Write, Upload and Share "\n"
-  Save your favorite articles "\n"
+    text: ` Write, Upload and Share \n
+  Save your favorite articles \n
   Stay updated with latest happenings of DDU `,
     image: require('../assets/images/ic_movie.png'),
     backgroundColor: '#55d6be',

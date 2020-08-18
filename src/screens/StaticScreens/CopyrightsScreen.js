@@ -25,7 +25,7 @@ static navigationOptions = {
 				source={IMAGES.dclogo}
 				style={{ width: 300, height: 96 }}
 			  />
-			  <Text style={{padding:20,fontSize:14}}>Version 1.0.0 </Text>
+			  <Text style={{padding:20,fontSize:14}}>Version 1.0.9 </Text>
 			  <Text style={{padding:10}}> www.dduconnect.in </Text>
 				
 			</View>
