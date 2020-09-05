@@ -9,12 +9,13 @@ import {
     Image, 
     TouchableOpacity, 
     TouchableHighlight,
-    ImageBackground
+    ImageBackground,
+    ImagePropTypes
 } from 'react-native'
 import Card from './Card'
 import moment from 'moment'
 
-export default function LiveEvents(){
+export default function PastEvents(){
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
@@ -25,8 +26,8 @@ export default function LiveEvents(){
             .then((response) => response.json())
             .then((responseJson) => {
                 let arr = responseJson
-                let newArray = responseJson.filter(function(item){                    
-                    return (moment().add(1,'days').isAfter(moment(item["Start-date"],"DD-MM-YYYY")) && moment().add(-1,'days').isBefore(moment(item["End-date"],"DD-MM-YYYY")))
+                let newArray = responseJson.filter(function(item){
+                    return (moment().isAfter(moment(item["End-date"],"DD-MM-YYYY"),'day'))
                 });
                 setData(newArray)
                 setLoading(false)

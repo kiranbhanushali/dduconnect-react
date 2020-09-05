@@ -1,5 +1,5 @@
 import React,{ Component ,PropType } from 'react';
-import {FlatList,ImageBackground,View,Modal,ActivityIndicator,TouchableHighlight,ScrollView,Image,Alert, Dimensions,StyleSheet,Picker} from 'react-native';
+import {RefreshControl,FlatList,ImageBackground,View,Modal,ActivityIndicator,TouchableHighlight,ScrollView,Image,Alert, Dimensions,StyleSheet,Picker} from 'react-native';
 import {Header,Separator,Title,Card,Button,Text,Left,Right,Body,Container,Icon, Row,} from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
 import Buzz from '../../components/Buzz'
@@ -11,6 +11,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { white } from 'color-name';
 import AboutUsScreen from '../StaticScreens/AboutUsScreen';
 import MeetOurTeamScreen from '../MeetOurTeam/MeetOurTeamScreen';
+import NetInfo from "@react-native-community/netinfo";
 
 import { createStackNavigator } from 'react-navigation-stack';
 
@@ -19,8 +20,9 @@ const RootStack = createStackNavigator(
 		AboutUs: { screen: AboutUsScreen },
 		MeetOurTeam: {screen: MeetOurTeamScreen }
 	});
-	const image = { uri: "https://raw.githubusercontent.com/kiranbhanushali/DDUConnectDatabase/master/notificationbg.jpeg" };
+const image = { uri: "https://raw.githubusercontent.com/kiranbhanushali/DDUConnectDatabase/master/notificationbg.jpeg" };
 export default class HomeScreen extends Component{
+	
 	static navigationOptions = ({navigation}) =>{
 		return {
 			headerTitle: <Text style={{fontFamily:'Montserrat-Bold',fontWeight:'900'}}> DDU Connect </Text>,
@@ -34,9 +36,10 @@ export default class HomeScreen extends Component{
 		}
 
 	}
+	
 	constructor(properties) {
 		super(properties);
-		this.state ={ isLoading: true, posterVisible: false, buttonOpacity:0.7,webpage_url:"", bg_url:"",btn_text:"",modalVisible: false,firstTime:true,link_for_vote:"https://docs.google.com/forms/d/e/1FAIpQLSdiNAAuB_EzclqTiq3qX5DvtW7GxZzdsqeJmTEiXYfc1GUU5Q/viewform"}
+		this.state ={ refreshing: false, isConnected: true, isLoading: true, posterVisible: false, buttonOpacity:0.7,webpage_url:"", bg_url:"",btn_text:"",modalVisible: false,firstTime:true,link_for_vote:"https://docs.google.com/forms/d/e/1FAIpQLSdiNAAuB_EzclqTiq3qX5DvtW7GxZzdsqeJmTEiXYfc1GUU5Q/viewform"}
 		
 		OneSignal.init("a049d642-1cbe-4905-9167-2fd53771083a", {kOSSettingsKeyAutoPrompt : true});// set kOSSettingsKeyAutoPrompt to false prompting manually on iOS
 
@@ -45,12 +48,28 @@ export default class HomeScreen extends Component{
 		OneSignal.addEventListener('ids', this.onIds);
 
 		// this.timer = setInterval(()=> this.getMovies(), 10000)
+		this.timer = setInterval(()=> this.getConnectionStatus(), 1000)
 	  }
+	
+	  getConnectionStatus(){
+		NetInfo.fetch().then(state => {
+			if ( this.state.isConnected != state.isConnected )
+			{
+				this.setState({isConnected : state.isConnected})
+			// this.state.isConnected = state.isConnected;
+				// console.log(this.state.isConnected);
+			}
+		});
+	  }
+
+	  
+
 	  componentDidMount(){
 		// Start counting when the page is loaded
 
 			// this.timer = setInterval(()=> this.getPosterStatus(), 5000)
 			this.getPosterStatus()
+			
 		// AsyncStorage.getItem('firstTime').then(
 		// 	value =>{
 		// 		console.log(value);
@@ -174,9 +193,13 @@ export default class HomeScreen extends Component{
 			})	
 	   }
 
+	   onRefresh = () => {
+			this.setState({refreshing: true});
+			this.setState({refreshing: false });
+	};
+
 
 	render(){
-		
 		
 		// if(this.state.isLoading){
 		// 	return(
@@ -228,8 +251,26 @@ export default class HomeScreen extends Component{
 					</View>
 				</Modal>
 			</View>
+			
+			<TouchableHighlight>
+				<View style={{backgroundColor:"red"}}>
+					{ 
+						this.state.isConnected ? null : <Text style={{alignSelf: "center", color: "white"}}>
+							No Internet Connection
+						</Text>
+					}
+				</View>
+			</TouchableHighlight>
+			
 
-			<ScrollView>
+			<ScrollView
+				 refreshControl={
+					<RefreshControl
+					  refreshing={this.state.refreshing}
+					  onRefresh={this.onRefresh}
+					/>
+				  }
+			>
 
 
 				<View style={{margin:5}}></View>

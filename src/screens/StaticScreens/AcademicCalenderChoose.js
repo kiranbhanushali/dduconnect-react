@@ -1,8 +1,32 @@
 import React  , { Component ,PropType } from 'react';
-import { View ,Text ,TouchableOpacity,Picker,StyleSheet} from 'react-native';
+import { View ,Text ,TouchableOpacity,Picker,StyleSheet, TouchableHighlight, RefreshControl, ScrollView} from 'react-native';
 import { Body,Icon,Button } from 'native-base';
 import {Header} from 'react-native-elements'
+import NetInfo from "@react-native-community/netinfo";
+
 export default class AcademicCalenderScreen extends Component{
+
+  constructor(properties) {
+		super(properties);
+		this.state ={ refreshing: false, isConnected: true}
+		
+		this.timer = setInterval(()=> this.getConnectionStatus(), 1000)
+	  }
+	
+	  getConnectionStatus(){
+		NetInfo.fetch().then(state => {
+			if ( this.state.isConnected != state.isConnected )
+			{
+				this.setState({isConnected : state.isConnected})
+			// this.state.isConnected = state.isConnected;
+				// console.log(this.state.isConnected);
+			}
+		});
+	  }
+  onRefresh = () => {
+    this.setState({refreshing: true});
+    this.setState({refreshing: false });
+};
 	
   render() {
     return (
@@ -16,11 +40,31 @@ export default class AcademicCalenderScreen extends Component{
           </Button>
           <Text style={{fontFamily:'Montserrat-Bold',fontWeight:'900'}}> Academic Calender </Text>
           </Header>     
-      
+          
         
         
+          <ScrollView style={styles.scrollView}
+
+            contentContainerStyle={{ flex: 1 }}
+                  refreshControl={
+                    <RefreshControl
+                      refreshing={this.state.refreshing}
+                      onRefresh={this.onRefresh}
+                    />
+            }
+            >
+              <TouchableHighlight>
+              <View style={{backgroundColor:"red"}}>
+                { 
+                  this.state.isConnected ? null : <Text style={{alignSelf: "center", color: "white", fontSize:15}}>
+                    No Internet Connection
+                  </Text>
+                }
+              </View>
+            </TouchableHighlight>
 
         <View style={{flex:1,paddingHorizontal:10}}>
+        
       
 
         <View style={styles.separator} />
@@ -38,8 +82,8 @@ export default class AcademicCalenderScreen extends Component{
           
 
      </View>
-
-        
+      </ScrollView>
+          
         
       </Body>
      

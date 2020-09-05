@@ -1,5 +1,5 @@
 import React, {Component, PropType} from 'react';
-import {View, ActivityIndicator,Image, ScrollView} from 'react-native';
+import {View, ActivityIndicator,Image, ScrollView, TouchableHighlight, RefreshControl} from 'react-native';
 import {
   Header,
   Title,
@@ -14,8 +14,32 @@ import {
   CardItem,
 } from 'native-base';
 import { widthPercentageToDP } from 'react-native-responsive-screen';
+import NetInfo from "@react-native-community/netinfo";
 
 export default class MembersScreen extends Component {
+
+  
+  constructor(props) {
+    super(props);
+    this.state = {isLoading: true, refreshing: false, isConnected: true};
+    global.mem = this.state.mem;
+    this.timer = setInterval(()=> this.getConnectionStatus(), 1000)
+  }
+	
+			getConnectionStatus(){
+				NetInfo.fetch().then(state => {
+					if ( this.state.isConnected != state.isConnected )
+					{
+						this.setState({isConnected : state.isConnected})
+					// this.state.isConnected = state.isConnected;
+						// console.log(this.state.isConnected);
+					}
+				});
+			}
+		onRefresh = () => {
+			this.setState({refreshing: true});
+			this.setState({refreshing: false });
+		};
 
   componentDidMount() {
       this.setState({d:this.props.navigation.state.params})
@@ -39,11 +63,6 @@ export default class MembersScreen extends Component {
     }
     // console.log(this.props);
   }
-  constructor(props) {
-    super(props);
-    this.state = {isLoading: true,};
-    global.mem = this.state.mem;
-  }
 
   render() {
     if (this.state.isLoading) {
@@ -59,7 +78,23 @@ export default class MembersScreen extends Component {
     return (
       <Container>
         <View style={{flex: 1}}>
-          <ScrollView>
+        <TouchableHighlight>
+              <View style={{backgroundColor:"red"}}>
+                { 
+                  this.state.isConnected ? null : <Text style={{alignSelf: "center", color: "white"}}>
+                    No Internet Connection
+                  </Text>
+                }
+              </View>
+            </TouchableHighlight>
+          <ScrollView
+            refreshControl={
+              <RefreshControl
+              refreshing={this.state.refreshing}
+              onRefresh={this.onRefresh}
+              />
+          }
+          >
           
           <View style={{flex: 1,width:widthPercentageToDP('65%'),justifyContent:'center',alignSelf:'center'}}>
             {this.state.nmem.members.map((item, key) => (

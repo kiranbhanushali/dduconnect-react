@@ -1,9 +1,10 @@
 import React,{ Component ,PropType } from 'react';
-import {FlatList,ImageBackground,View,ScrollView,Image,StyleSheet, Dimensions,ActivityIndicator} from 'react-native';
+import {FlatList,ImageBackground,View,ScrollView,Image,StyleSheet, Dimensions,ActivityIndicator, TouchableHighlight, RefreshControl} from 'react-native';
 import { WebView } from 'react-native-webview';
 import {Title,Card,Text,Left,Right,Button,Body,Container,Icon, Row} from 'native-base';
 import {Header} from 'react-native-elements'
 import YouTube from 'react-native-youtube'
+import NetInfo from "@react-native-community/netinfo";
 
 export default class AboutUsScreen extends Component{
   
@@ -12,8 +13,25 @@ export default class AboutUsScreen extends Component{
 	}
     constructor(props) {
         super(props);
-        this.state = { visible: true, video_link:"" };
-    }
+        this.state = { visible: true, video_link:"",  refreshing: false, isConnected: true };
+        this.timer = setInterval(()=> this.getConnectionStatus(), 1000)    
+      }
+
+      getConnectionStatus(){
+				NetInfo.fetch().then(state => {
+					if ( this.state.isConnected != state.isConnected )
+					{
+						this.setState({isConnected : state.isConnected})
+					// this.state.isConnected = state.isConnected;
+						// console.log(this.state.isConnected);
+					}
+				});
+			}
+		onRefresh = () => {
+			this.setState({refreshing: true});
+			this.setState({refreshing: false });
+		};
+
     
     componentDidMount(){
       this.getVideo();
@@ -48,6 +66,25 @@ export default class AboutUsScreen extends Component{
           </Button>
           <Text style={{fontFamily:'Montserrat-Bold',fontWeight:'900'}}> About Us </Text>
           </Header>  
+          <ScrollView style={styles.scrollView}
+
+            contentContainerStyle={{ flex: 1 }}
+                  refreshControl={
+                    <RefreshControl
+                      refreshing={this.state.refreshing}
+                      onRefresh={this.onRefresh}
+                    />
+            }
+            >
+              <TouchableHighlight>
+              <View style={{backgroundColor:"red"}}>
+                { 
+                  this.state.isConnected ? null : <Text style={{alignSelf: "center", color: "white"}}>
+                    No Internet Connection
+                  </Text>
+                }
+              </View>
+            </TouchableHighlight>
           <WebView
             style={{ alignSelf: 'stretch', margin:15 }}
             source={{uri: this.state.video_link}}
@@ -71,7 +108,7 @@ export default class AboutUsScreen extends Component{
               
               </Text>
             </ScrollView>
-
+          </ScrollView>
         </View>  
     );  
 }
