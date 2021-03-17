@@ -1,4 +1,4 @@
-package com.ddu_connect;
+package com.dduconnect.dduconnect;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "DDU_CONNECT";
+    return "DDUCONNECT";
   }
 }
