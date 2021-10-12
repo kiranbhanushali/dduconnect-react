@@ -52,17 +52,17 @@ export default class FavouriteScreen extends Component{
                 </Text>
                 {'\n'}
                 {'\n'}
-                 all know about the growth of an eye-catching butterfly from an ugly looking caterpillar. Despite the cocoon being the comfort zone of the caterpillar, it has to take its first step that is to say to emerge from being in a cocoon. This process of metamorphosis is a great symbol for change, transition, adaptation, and growth. Comfort zones are simply our unchartered waters where our unrealized dreams are buried. Success begins when we step out of this zone. We must always trust our process, even if sometimes along the way things seem to be uncertain or nearly impossible.
+                 “Kintsugi or Kintsukuroi (“golden joinery”) is the centuries-old Japanese art of putting broken pottery pieces back together with golden adhesive that enhances the break lines, thus making the piece unique.” Having scars or being broken isn’t shameful. When we embrace the beauty of improving imperfections, we create an even stronger, resilient, and the most stunning version of ourselves. Acceptance and Improvisation is the art everyone must master. Life is going to be tough and you might fall, but the beauty is in standing up and never giving up. Comfort zones are simply our unchartered waters where our unrealized dreams are buried. Success begins when we step out of this zone. We must always trust our process, even if sometimes along the way things seem to be uncertain or nearly impossible.
                 {'\n'}
                 {'\n'}
-                With never-ending possibilities in paving way for creativity, DDU Connect has taken a step forward in its sublime journey. Get ready to indulge yourselves in the world of uniqueness. Our writers are ready to take you to a new expedition through the Open Letter, Fiction, ‘Tech’ It Easy, Connect-ions and Writer’s Lounge. Get to know the various events taking place in the university through the DDU Buzz. Also for the creative minds of our university, we are soon bringing back our art related page named ‘Artisic Visions’.
+                By understanding, and embracing our fellow students' interests we aim to build stronger and lasting impressions that will multiply in terms of readers and contributors. Our writers are ready to take you on a new expedition through the Open Letter, Fiction, ‘Tech’ It Easy, Connections, and Writer’s Lounge. Get to know the various events taking place in the university through the DDU Buzz. Also for the creative minds of our university, we are soon bringing back our art-related page named ‘Artistic Visions’.
                 {'\n'}
                 {'\n'}
                 We, as always, await your stories of adventures and experiences at
                 dduconnect@gmail.com.
-  {'\n'}
                 {'\n'}
-                Sruthi Cheruvullil{'\n'}
+                {'\n'}
+                Muskan Vora{'\n'}
         <Text style={{ fontWeight: 'bold',
       color: 'white' }}>         
   Editor-in-Chief</Text>
